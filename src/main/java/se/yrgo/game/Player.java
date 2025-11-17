@@ -22,4 +22,28 @@ public class Player {
     public int getScore() {
         return score;
     }
+
+    public int increaseHealth(int healthAmount) {
+        return health += healthAmount;
+    }
+
+    public int decreaseHealth(int healthAmount) {
+        return health -= healthAmount;
+    }
+
+    public int increaseScore(int scoreAmount) {
+        return score += scoreAmount;
+    }
+
+    public int decreaseScore(int scoreAmount) {
+        return score -= scoreAmount;
+    }
+
+    public int damage(int damageAmount) {
+        return damageAmount;
+    }
+
+    public int wound(int damageAmount) {
+        return damageAmount;
+    }
 }
