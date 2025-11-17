@@ -8,4 +8,6 @@ public interface Monster {
     String getName();
 
     int getHealth();
+
+    void wound(int hitPoints);
 }
