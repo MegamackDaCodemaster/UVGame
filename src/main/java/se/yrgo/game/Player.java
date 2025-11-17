@@ -38,4 +38,12 @@ public class Player {
     public int decreaseScore(int scoreAmount) {
         return score -= scoreAmount;
     }
+
+    public int damage(int damageAmount) {
+        return damageAmount;
+    }
+
+    public int wound(int damageAmount) {
+        return damageAmount;
+    }
 }
