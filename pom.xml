@@ -6,6 +6,7 @@
 
     <groupId>se.yrgo</groupId>
     <artifactId>UVGame</artifactId>
+    <name>UVGame</name>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
