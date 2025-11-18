@@ -21,7 +21,7 @@ public class Game {
         rooms = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
-            rooms.add(RoomMain.getRoom()); //
+            rooms.add(RoomMain.getRoom()); //Todo: Need a method for getting a room object
         }
     }
 
@@ -42,8 +42,16 @@ public class Game {
         }
 
         if (player.getHealth() <= 0) {
-
+            //Game over
         }
+
+        System.out.println("You have cleared the game!!");
+        System.out.printf("Final score: %d", player.getScore());
+    }
+
+    private void encounterRoom(Player player) {
+        //Todo: Print encounter message. Print room content. Print menu for choice of action
+        //Todo: Don't forget: end of battle, increase score
     }
 
 
@@ -62,6 +70,7 @@ public class Game {
         if (player.getHealth() <= 0) {
             //Game over
         }
-
     }
+
+
 }
