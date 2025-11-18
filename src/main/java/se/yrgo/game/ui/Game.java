@@ -1,6 +1,6 @@
 package se.yrgo.game.ui;
 
-import se.yrgo.game.Player;
+import se.yrgo.game.player.Player;
 import se.yrgo.game.Room.Room;
 import se.yrgo.game.Room.RoomMain;
 import se.yrgo.game.monster.Monster;
@@ -21,7 +21,7 @@ public class Game {
         rooms = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
-            rooms.add(RoomMain.getRoom());
+            rooms.add(RoomMain.getRoom()); //
         }
     }
 
