@@ -10,7 +10,7 @@ public class Game {
     }
 
     public void doBattle(Player player, Monster monster) {
-        int damage = player.attack();
+        int damage = player.getAttackDamage();
         monster.wound(damage);
 
         System.out.printf("You inflicted %d points of damage to the %s!%n", monster.getName());
