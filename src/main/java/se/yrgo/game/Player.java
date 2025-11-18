@@ -4,6 +4,7 @@ public class Player {
     private String name;
     private int health;
     private int score;
+    private int attackDamage;
 
     public Player(String name, int health, int score) {
         this.name = name;
@@ -24,11 +25,21 @@ public class Player {
     }
 
     public int increaseHealth(int healthAmount) {
-        return health += healthAmount;
+        health += healthAmount;
+        if (health == 100) {
+            health = 100;
+            return health;
+        }
+        return health;
     }
 
     public int decreaseHealth(int healthAmount) {
-        return health -= healthAmount;
+        health -= healthAmount;
+        if (health == 0) {
+            health = 0;
+            return health;
+        }
+        return health;
     }
 
     public int increaseScore(int scoreAmount) {
@@ -39,11 +50,15 @@ public class Player {
         return score -= scoreAmount;
     }
 
-    public int damage(int damageAmount) {
+    public int attack(int damageAmount) {
         return damageAmount;
     }
 
     public int wound(int damageAmount) {
         return damageAmount;
+    }
+
+    public int getAttackDamage() {
+        return attackDamage;
     }
 }
