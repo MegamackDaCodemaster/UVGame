@@ -1,7 +1,5 @@
 package se.yrgo.game.monster;
 
-import se.yrgo.game.Player;
-
 import java.util.Objects;
 
 public final class Troll implements Monster{

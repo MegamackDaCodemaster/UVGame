@@ -1,4 +1,4 @@
-package se.yrgo.game;
+package se.yrgo.game.player;
 
 public class Player {
     private String name;

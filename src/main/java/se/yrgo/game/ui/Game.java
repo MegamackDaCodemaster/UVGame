@@ -1,6 +1,6 @@
 package se.yrgo.game.ui;
 
-import se.yrgo.game.Player;
+import se.yrgo.game.player.Player;
 import se.yrgo.game.monster.Monster;
 
 public class Game {
