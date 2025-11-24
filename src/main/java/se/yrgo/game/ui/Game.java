@@ -10,17 +10,19 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-    public Player player;
-    public List<Room> rooms;
+    private Player player; //Initialized in runGame method
+    private List<Room> rooms;
+    private int numberOfRoomsInGame;
 
     public Game() {
+        numberOfRoomsInGame = 10;
         initializeRooms();
     }
 
     private void initializeRooms() {
         rooms = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < numberOfRoomsInGame; i++) {
             rooms.add(RoomMain.getRoom()); //Todo: Need a method for getting a room object
         }
     }
@@ -33,12 +35,13 @@ public class Game {
         System.out.printf("Welcome %s! You start your journey here...%n", player.getName());
         System.out.println();
 
-        while (!rooms.isEmpty() || player.getHealth() <= 0) {
+        while (!rooms.isEmpty() && player.getHealth() > 0) {
             int roomCounter = 0;
 
-            encounterRoom(player);
+            encounterRoom(player, rooms.get(roomCounter));
 
             rooms.remove(rooms.get(roomCounter));
+            roomCounter++;
         }
 
         if (player.getHealth() <= 0) {
@@ -49,9 +52,11 @@ public class Game {
         System.out.printf("Final score: %d", player.getScore());
     }
 
-    private void encounterRoom(Player player) {
+    private void encounterRoom(Player player, Room room) {
         //Todo: Print encounter message. Print room content. Print menu for choice of action
         //Todo: Don't forget: end of battle, increase score
+
+
     }
 
 
