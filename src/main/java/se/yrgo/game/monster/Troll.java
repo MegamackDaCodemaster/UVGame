@@ -3,17 +3,19 @@ package se.yrgo.game.monster;
 import java.util.Objects;
 
 public final class Troll implements Monster{
-    private final String name;
+    private final String monsterType;
+    private final String presentation;
     private int health;
     private final int rewardScore;
     private final int strength;
 
     public Troll() {
-        this("Troll", 30, 100, 25);
+        this("troll","A hideous troll", 30, 100, 25);
     }
 
-    public Troll(String name, int rewardScore, int health, int strength) {
-        Objects.requireNonNull(name, "The parameter 'name' is required for this constructor");
+    public Troll(String monsterType, String presentation, int rewardScore, int health, int strength) {
+        Objects.requireNonNull(monsterType, "The parameter 'monsterType' is required for this constructor");
+        Objects.requireNonNull(presentation, "The parameter 'presentation' is required for this constructor");
 
         if (health <= 0) {
             throw new IllegalArgumentException("The health value need to be more than 0.");
@@ -23,7 +25,8 @@ public final class Troll implements Monster{
             throw new IllegalArgumentException("The strength value need to be more than 0.");
         }
 
-        this.name = name;
+        this.monsterType = monsterType;
+        this.presentation = presentation;
         this.rewardScore = rewardScore;
         this.health = health;
         this.strength = strength;
@@ -44,8 +47,8 @@ public final class Troll implements Monster{
 //    }
 
     @Override
-    public String getName() {
-        return name;
+    public String getMonsterType() {
+        return monsterType;
     }
 
     @Override
