@@ -1,18 +1,18 @@
 package se.yrgo.game.ui;
 
+import se.yrgo.game.items.Item;
 import se.yrgo.game.player.Player;
 import se.yrgo.game.Room.Room;
 import se.yrgo.game.Room.RoomMain;
 import se.yrgo.game.monster.Monster;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     private Player player; //Initialized in runGame method
     private List<Room> rooms;
     private int numberOfRoomsInGame;
+    private Scanner scanner;
 
     public Game() {
         numberOfRoomsInGame = 10;
@@ -28,6 +28,8 @@ public class Game {
     }
 
     public void runGame(Scanner scanner) {
+        this.scanner = scanner;
+
         System.out.println("Choose a player name: ");
         String name = scanner.nextLine();
 
@@ -46,17 +48,49 @@ public class Game {
 
         if (player.getHealth() <= 0) {
             //Game over
+        } else {
+            System.out.println("You have cleared the game!!");
+            System.out.printf("Final score: %d", player.getScore());
         }
 
-        System.out.println("You have cleared the game!!");
-        System.out.printf("Final score: %d", player.getScore());
     }
 
-    private void encounterRoom(Player player, Room room) {
-        //Todo: Print encounter message. Print room content. Print menu for choice of action
+    /**
+     * Room encounter logics. Returns true if room was cleared without dying, false otherwise...
+     * @param player
+     * @param room
+     * @return
+     */
+    private boolean encounterRoom(Player player, Room room) {
         //Todo: Don't forget: end of battle, increase score
 
+        System.out.printf("You step into %s%n", room.getName().toLowerCase());
+        System.out.printf("Where you encounter %s! Get ready for battle!!%n",
+                room.getMonster.getName.toLower()); //Todo somehow get the room's monster
 
+        doBattle(player, room.getMonster);
+
+        if (isPlayerDead(player)) {
+            return false;
+        }
+
+        System.out.println("Congratulations! You won the battle! You earned %d XP!");
+        System.out.println("************************");
+
+        if (room.getItem() != null) { //Todo: get the room's item
+            findItem(player, room.getItem);
+        }
+
+        if (isPlayerDead(player)) {
+            return false;
+        }
+
+        System.out.println("You exit the room.");
+        return true;
+    }
+
+    private boolean isPlayerDead(Player player) {
+        return player.getHealth() <= 0;
     }
 
 
@@ -64,18 +98,56 @@ public class Game {
         int damage = player.getAttackDamage();
         monster.wound(damage);
 
-        System.out.printf("You inflicted %d points of damage to the %s!%n", damage, monster.getName());
+        System.out.printf("You inflicted %d points of damage to the %s!%n", damage, monster.getMonsterType());
         if (monster.getHealth() <= 0) {
-            System.out.printf("You killed the %s!%n", monster.getName());
+            System.out.printf("You killed the %s!%n", monster.getMonsterType());
         }
 
         player.decreaseHealth(monster.getStrength());
-        System.out.printf("The %s does %d points of damage to you!", monster.getName(), monster.getStrength());
+        System.out.printf("The %s does %d points of damage to you!", monster.getMonsterType(), monster.getStrength());
 
         if (player.getHealth() <= 0) {
             //Game over
         }
     }
 
+    private void findItem(Player player, Item item) {
+        System.out.println("What's this? The monster dropped something...");
+
+        System.out.printf("You see %s.%n", item.getName); //Todo: getName method on item.
+
+        System.out.println("What do you want to do?");
+
+        System.out.printf("""
+               1. Pick it up and use. YOLO!
+               2. Leave it. It might be dangerous. 
+                """);
+
+        var input = getUserInput(new int[] {1, 2});
+
+        if (input == 1) {
+            item.pickup(player);
+        }
+        else {
+            System.out.println("You leave it lying and walk away.");
+        }
+    }
+
+    private int getUserInput(int[] possibleChoices) {
+        int input = -1;
+
+        while (!Arrays.asList(possibleChoices).contains(input)) { //Todo: test!
+            try {
+                input = scanner.nextInt();
+                if (!Arrays.asList(possibleChoices).contains(input)) {
+                    System.out.println("Wrong input, try again.");
+                }
+            }
+            catch (InputMismatchException e) {
+                System.out.println("Wrong input, try again: ");
+            }
+        }
+        return input;
+    }
 
 }
