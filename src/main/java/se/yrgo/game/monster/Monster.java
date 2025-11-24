@@ -3,7 +3,9 @@ package se.yrgo.game.monster;
 public interface Monster {
 //    String doBattle(Player player);
 
-    String getName();
+    String getMonsterType();
+
+    String getPresentation();
 
     int getHealth();
 

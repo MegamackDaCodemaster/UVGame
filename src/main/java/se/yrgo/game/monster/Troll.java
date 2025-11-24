@@ -52,6 +52,11 @@ public final class Troll implements Monster{
     }
 
     @Override
+    public String getPresentation() {
+        return presentation;
+    }
+
+    @Override
     public int getHealth() {
         return health;
     }
