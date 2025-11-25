@@ -12,7 +12,7 @@ public class Game {
     private Player player; //Initialized in runGame method
     private List<Room> rooms;
     private int numberOfRoomsInGame;
-    private Scanner scanner;
+    private Scanner scanner; //Todo: init in constructor
 
     public Game() {
         numberOfRoomsInGame = 10;
@@ -33,9 +33,15 @@ public class Game {
         System.out.println("Choose a player name: ");
         String name = scanner.nextLine();
 
+        if (name == null || name.isBlank()) {
+            System.out.println("Incompatible name format. Your name is now 'Humble Hero'!");
+            name = "Humble Hero";
+        }
+        name = name.strip();
         player = new Player(name, 100, 0);
+
         System.out.printf("Welcome %s! You start your journey here...%n", player.getName());
-        System.out.println();
+        printWaitingIntervalDots();
 
         while (!rooms.isEmpty() && player.getHealth() > 0) {
             int roomCounter = 0;
@@ -57,16 +63,18 @@ public class Game {
 
     /**
      * Room encounter logics. Returns true if room was cleared without dying, false otherwise...
-     * @param player
-     * @param room
-     * @return
+     *
+     * @param player the current player
+     * @param room the room to encounter
+     * @return true if all went well, false if player died
      */
     private boolean encounterRoom(Player player, Room room) {
         //Todo: Don't forget: end of battle, increase score
 
         System.out.printf("You step into %s%n", room.getName().toLowerCase());
         System.out.printf("Where you encounter %s! Get ready for battle!!%n",
-                room.getMonster.getName.toLower()); //Todo somehow get the room's monster
+                room.getMonster.getPresentation.toLower()); //Todo somehow get the room's monster
+        pauseTextFlow(2500);
 
         doBattle(player, room.getMonster);
 
@@ -75,6 +83,7 @@ public class Game {
         }
 
         System.out.println("Congratulations! You won the battle! You earned %d XP!");
+        pauseTextFlow(2000);
         System.out.println("************************");
 
         if (room.getItem() != null) { //Todo: get the room's item
@@ -88,6 +97,7 @@ public class Game {
         System.out.println("You exit the room.");
         return true;
     }
+
 
     private boolean isPlayerDead(Player player) {
         return player.getHealth() <= 0;
@@ -119,16 +129,15 @@ public class Game {
         System.out.println("What do you want to do?");
 
         System.out.printf("""
-               1. Pick it up and use. YOLO!
-               2. Leave it. It might be dangerous. 
+                1. Pick it up and use. YOLO!
+                2. Leave it. It might be dangerous. 
                 """);
 
-        var input = getUserInput(new int[] {1, 2});
+        var input = getUserInput(new int[]{1, 2});
 
         if (input == 1) {
             item.pickup(player);
-        }
-        else {
+        } else {
             System.out.println("You leave it lying and walk away.");
         }
     }
@@ -142,12 +151,34 @@ public class Game {
                 if (!Arrays.asList(possibleChoices).contains(input)) {
                     System.out.println("Wrong input, try again.");
                 }
-            }
-            catch (InputMismatchException e) {
+            } catch (InputMismatchException e) {
                 System.out.println("Wrong input, try again: ");
             }
         }
         return input;
     }
 
+    private void printWaitingIntervalDots() {
+        try {
+            for (int i = 0; i < 3; i++) {
+                System.out.printf(".");
+                Thread.sleep(1000);
+            }
+        }
+        catch (InterruptedException e) {
+            Thread.interrupted();
+        }
+        System.out.println();
+    }
+
+    private void pauseTextFlow(int milisToPause) {
+        try {
+            Thread.sleep(milisToPause);
+        }
+        catch (InterruptedException e) {
+            Thread.interrupted();
+        }
+    }
 }
+
+//Todo: Create GameUi class?
