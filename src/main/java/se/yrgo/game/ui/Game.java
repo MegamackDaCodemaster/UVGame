@@ -55,6 +55,7 @@ public class Game {
         if (player.getHealth() <= 0) {
             //Game over
         } else {
+            System.out.printf("At last, %s steps out of the last room and reaches the goal...%n%n", player.getName());
             System.out.println("You have cleared the game!!");
             System.out.printf("Final score: %d", player.getScore());
         }
@@ -65,7 +66,7 @@ public class Game {
      * Room encounter logics. Returns true if room was cleared without dying, false otherwise...
      *
      * @param player the current player
-     * @param room the room to encounter
+     * @param room   the room to encounter
      * @return true if all went well, false if player died
      */
     private boolean encounterRoom(Player player, Room room) {
@@ -74,7 +75,7 @@ public class Game {
         System.out.printf("You step into %s%n", room.getName().toLowerCase());
         System.out.printf("Where you encounter %s! Get ready for battle!!%n",
                 room.getMonster.getPresentation.toLower()); //Todo somehow get the room's monster
-        pauseTextFlow(2500);
+        pauseTextFlow(2000);
 
         doBattle(player, room.getMonster);
 
@@ -82,9 +83,8 @@ public class Game {
             return false;
         }
 
-        System.out.println("Congratulations! You won the battle! You earned %d XP!");
         pauseTextFlow(2000);
-        System.out.println("************************");
+        System.out.println("************************\n");
 
         if (room.getItem() != null) { //Todo: get the room's item
             findItem(player, room.getItem);
@@ -105,19 +105,46 @@ public class Game {
 
 
     public void doBattle(Player player, Monster monster) {
-        int damage = player.getAttackDamage();
-        monster.wound(damage);
+        System.out.printf("""
+                - BATTLE WITH %s - 
+                """, monster.getMonsterType().toUpperCase());
 
-        System.out.printf("You inflicted %d points of damage to the %s!%n", damage, monster.getMonsterType());
-        if (monster.getHealth() <= 0) {
-            System.out.printf("You killed the %s!%n", monster.getMonsterType());
+        while (!isPlayerDead(player) && monster.getHealth() > 0) {
+            System.out.printf("""
+                            %s: %d HP left
+                            %s: %d HP left
+                            """,
+                    player.getName(), player.getHealth(),
+                    monster.getMonsterType(), monster.getHealth());
+
+            pauseTextFlow(1500);
+            System.out.printf("%s charges the %s!", player.getName(), monster.getMonsterType());
+
+            int damage = player.getAttackDamage();
+            monster.wound(damage);
+
+            System.out.printf("You inflicted %d points of damage to the %s!%n", damage, monster.getMonsterType());
+            pauseTextFlow(1500);
+
+            if (monster.getHealth() <= 0) {
+                System.out.printf("You killed the %s!%n", monster.getMonsterType());
+                break;
+            }
+
+            System.out.printf("It's still alive and kicking ");
+            printWaitingIntervalDots();
+            System.out.printf("you!%n");
+            pauseTextFlow(1000);
+
+            player.decreaseHealth(monster.getStrength());
+            System.out.printf("You take %d points of damage! Ouch!", monster.getStrength());
+            pauseTextFlow(1000);
         }
 
-        player.decreaseHealth(monster.getStrength());
-        System.out.printf("The %s does %d points of damage to you!", monster.getMonsterType(), monster.getStrength());
-
-        if (player.getHealth() <= 0) {
-            //Game over
+        if (!isPlayerDead(player)) {
+            player.increaseScore(monster.getRewardPoints());
+            System.out.printf("Congratulations! You won the battle! You earned %d victory points!",
+                    monster.getRewardPoints());
         }
     }
 
@@ -164,8 +191,7 @@ public class Game {
                 System.out.printf(".");
                 Thread.sleep(1000);
             }
-        }
-        catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             Thread.interrupted();
         }
         System.out.println();
@@ -174,8 +200,7 @@ public class Game {
     private void pauseTextFlow(int milisToPause) {
         try {
             Thread.sleep(milisToPause);
-        }
-        catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             Thread.interrupted();
         }
     }
