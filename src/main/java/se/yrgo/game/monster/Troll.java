@@ -1,19 +1,22 @@
 package se.yrgo.game.monster;
 
 import java.util.Objects;
+import java.util.Random;
 
-public final class Troll implements Monster{
+public final class Troll implements Monster {
     private final String monsterType;
     private final String presentation;
     private int health;
-    private final int rewardScore;
-    private final int strength;
+    private final int rewardPoints;
+    private final int attackDamage;
+    private final Random random;
 
+    //Todo: Fix randomized damage infliction
     public Troll() {
-        this("troll","A hideous troll", 30, 100, 25);
+        this("troll", "A hideous troll", 30, 100, 25);
     }
 
-    public Troll(String monsterType, String presentation, int rewardScore, int health, int strength) {
+    public Troll(String monsterType, String presentation, int rewardPoints, int health, int attackDamage) {
         Objects.requireNonNull(monsterType, "The parameter 'monsterType' is required for this constructor");
         Objects.requireNonNull(presentation, "The parameter 'presentation' is required for this constructor");
 
@@ -21,30 +24,18 @@ public final class Troll implements Monster{
             throw new IllegalArgumentException("The health value need to be more than 0.");
         }
 
-        if (strength <= 0) {
+        if (attackDamage <= 0) {
             throw new IllegalArgumentException("The strength value need to be more than 0.");
         }
 
         this.monsterType = monsterType;
         this.presentation = presentation;
-        this.rewardScore = rewardScore;
+        this.rewardPoints = rewardPoints;
         this.health = health;
-        this.strength = strength;
+        this.attackDamage = attackDamage;
+        this.random = new Random();
     }
 
-//    @Override
-//    public String doBattle(Player player) {
-//        int damage = player.getAttackDamage();
-//        wound(damage);
-//
-//        if (health <= 0) {
-//            return "You killed the troll!";
-//        }
-//
-//
-//
-//        return "";
-//    }
 
     @Override
     public String getMonsterType() {
@@ -57,13 +48,18 @@ public final class Troll implements Monster{
     }
 
     @Override
+    public int getRewardPoints() {
+        return rewardPoints;
+    }
+
+    @Override
     public int getHealth() {
         return health;
     }
 
     @Override
-    public int getStrength() {
-        return strength;
+    public int getAttackDamage() {
+        return random.nextInt(1, attackDamage + 1);
     }
 
     @Override
@@ -72,6 +68,5 @@ public final class Troll implements Monster{
             health -= hitPoints;
         }
     }
-
 
 }

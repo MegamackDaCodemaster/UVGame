@@ -136,8 +136,8 @@ public class Game {
             System.out.printf("you!%n");
             pauseTextFlow(1000);
 
-            player.decreaseHealth(monster.getStrength());
-            System.out.printf("You take %d points of damage! Ouch!", monster.getStrength());
+            player.decreaseHealth(monster.getAttackDamage());
+            System.out.printf("You take %d points of damage! Ouch!", monster.getAttackDamage());
             pauseTextFlow(1000);
         }
 

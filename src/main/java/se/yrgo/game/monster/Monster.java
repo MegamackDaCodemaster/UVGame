@@ -3,7 +3,7 @@ package se.yrgo.game.monster;
 public interface Monster {
 //    String doBattle(Player player);
 
-    String getMonsterType();
+    String getMonsterType(); //Todo: Rename
 
     String getPresentation();
 
@@ -11,7 +11,7 @@ public interface Monster {
 
     int getHealth();
 
-    int getStrength();
+    int getAttackDamage();
 
     void wound(int hitPoints);
 
