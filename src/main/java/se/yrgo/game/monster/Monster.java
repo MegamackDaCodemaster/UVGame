@@ -7,9 +7,12 @@ public interface Monster {
 
     String getPresentation();
 
+    int getRewardPoints();
+
     int getHealth();
+
+    int getStrength();
 
     void wound(int hitPoints);
 
-    int getStrength();
 }
