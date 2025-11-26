@@ -11,18 +11,19 @@ import java.util.*;
 public class Game {
     private Player player; //Initialized in runGame method
     private List<Room> rooms;
-    private int numberOfRoomsInGame;
     private Scanner scanner; //Todo: init in constructor
 
+    public static int START_AMOUNT_OF_ROOMS = 10;
+
+
     public Game() {
-        numberOfRoomsInGame = 10;
         initializeRooms();
     }
 
     private void initializeRooms() {
         rooms = new ArrayList<>();
 
-        for (int i = 0; i < numberOfRoomsInGame; i++) {
+        for (int i = 0; i < START_AMOUNT_OF_ROOMS; i++) {
             rooms.add(RoomMain.getRoom()); //Todo: Need a method for getting a room object
         }
     }
@@ -136,8 +137,9 @@ public class Game {
             System.out.printf("you!%n");
             pauseTextFlow(1000);
 
-            player.decreaseHealth(monster.getAttackDamage());
-            System.out.printf("You take %d points of damage! Ouch!", monster.getAttackDamage());
+            int monsterAttackDamage = monster.getRandomAttack();
+            player.decreaseHealth(monsterAttackDamage);
+            System.out.printf("You take %d points of damage! Ouch!", monsterAttackDamage);
             pauseTextFlow(1000);
         }
 
@@ -197,9 +199,9 @@ public class Game {
         System.out.println();
     }
 
-    private void pauseTextFlow(int milisToPause) {
+    private void pauseTextFlow(int millisToPause) {
         try {
-            Thread.sleep(milisToPause);
+            Thread.sleep(millisToPause);
         } catch (InterruptedException e) {
             Thread.interrupted();
         }
