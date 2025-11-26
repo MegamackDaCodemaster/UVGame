@@ -1,10 +1,9 @@
 package se.yrgo.game.ui;
 
 import org.junit.jupiter.api.Test;
+import se.yrgo.game.gameplay.Game;
 
 import java.util.Scanner;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
     private Game game = new Game();

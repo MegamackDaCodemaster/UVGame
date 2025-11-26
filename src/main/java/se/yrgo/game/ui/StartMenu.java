@@ -1,5 +1,7 @@
 package se.yrgo.game.ui;
 
+import se.yrgo.game.gameplay.Game;
+
 import java.util.*;
 
 public class StartMenu {
