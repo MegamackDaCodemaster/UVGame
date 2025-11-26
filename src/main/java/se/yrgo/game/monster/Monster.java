@@ -11,7 +11,9 @@ public interface Monster {
 
     int getHealth();
 
-    int getAttackDamage();
+    int getStrength();
+
+    int getRandomAttack();
 
     void wound(int hitPoints);
 
