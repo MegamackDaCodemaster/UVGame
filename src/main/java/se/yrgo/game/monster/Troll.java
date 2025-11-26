@@ -11,7 +11,9 @@ public final class Troll implements Monster {
     private final int strength;
     private final Random random;
 
-    //Todo: Fix randomized damage infliction
+    /**
+     * Constructs a default {@code Troll} with pre-defined stats.
+     */
     public Troll() {
         this("troll", "A hideous troll", 30, 100, 25);
     }
