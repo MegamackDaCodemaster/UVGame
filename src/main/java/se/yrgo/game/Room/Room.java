@@ -1,42 +1,26 @@
 package se.yrgo.game.Room;
 
-public class Room {
-    private String name;
-    private String description;
-    private Room nextRoom;     // the room above / after this one
-    private Room previousRoom; // optional: the room below / before this one
+import se.yrgo.game.monster.Monster;
+import se.yrgo.game.items.Item;
+import java.util.List;
 
-    public Room(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
+public interface Room {
+    String getName();
+    String getDescription();
 
-    public String getName() {
-        return name;
-    }
+    Room getNextRoom();
+    Room getPreviousRoom();
 
-    public String getDescription() {
-        return description;
-    }
+    void setNextRoom(Room nextRoom);
 
-    public Room getNextRoom() {
-        return nextRoom;
-    }
+    List<Monster> getMonsters();
+    void addMonster(Monster monster);
+    void removeMonster(Monster monster);
 
-    public Room getPreviousRoom() {
-        return previousRoom;
-    }
-
-    public void setNextRoom(Room nextRoom) {
-        this.nextRoom = nextRoom;
-        if (nextRoom != null) {
-            nextRoom.previousRoom = this;
-        }
-    }
+    List<Item> getItems();
+    void addItem(Item item);
+    void removeItem(Item item);
 
     @Override
-    public String toString() {
-        return name + ": " + description;
-    }
+    String toString();
 }
-
