@@ -39,7 +39,7 @@ public final class GameActions {
     public boolean encounterRoom() {
         GameUI.printToScreen(String.format("You step into %s%n", room.getName().toLowerCase()));
         GameUI.printToScreen(String.format("Where you encounter %s! Get ready for battle!!%n",
-                room.getMonster().getPresentation().toLower()));
+                room.getMonster().getPresentation().toUpperCase()));
         GameUI.pauseTextFlow(2000);
 
         doBattle(player, room.getMonster());
@@ -52,7 +52,7 @@ public final class GameActions {
         GameUI.printToScreen(String.format("************************%n"));
 
         if (room.getItem() != null) { //Todo: get the room's item
-            findItem(player, room.getItem(), scanner);
+            findItem(player, room.getItem());
         }
 
         if (isPlayerDead(player)) {
