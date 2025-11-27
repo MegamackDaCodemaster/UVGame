@@ -129,7 +129,7 @@ public final class GameActions {
         }
     }
 
-    //todo move to Player
+    //todo move to Player?
     public boolean isPlayerDead(Player player) {
         return player.getHealth() <= 0;
     }
@@ -141,10 +141,10 @@ public final class GameActions {
             try {
                 input = gameUI.getInput();
                 if (!Arrays.asList(possibleChoices).contains(input)) {
-                    System.out.println("Wrong input, try again.");
+                    GameUI.printToScreen("Wrong input, try again.");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Wrong input, try again: ");
+                GameUI.printToScreen("Wrong input, try again: ");
             }
         }
         return input;

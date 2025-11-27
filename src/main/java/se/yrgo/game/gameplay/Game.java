@@ -4,7 +4,6 @@ import se.yrgo.game.Room.Room1;
 import se.yrgo.game.items.Item;
 import se.yrgo.game.player.Player;
 import se.yrgo.game.Room.Room;
-import se.yrgo.game.Room.RoomMain;
 import se.yrgo.game.monster.Monster;
 import se.yrgo.game.ui.GameUI;
 
@@ -36,9 +35,6 @@ public class Game {
         rooms.add(new Room1("Cave", "A dark and creepy cave") {
         });
 
-//        for (int i = 0; i < START_AMOUNT_OF_ROOMS; i++) {
-//            rooms.add(RoomMain.getRoom()); //Todo: Need a method for getting a room object
-//        }
     }
 
     public void runGame() {
