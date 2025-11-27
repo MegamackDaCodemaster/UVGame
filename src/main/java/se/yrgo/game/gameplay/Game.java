@@ -14,6 +14,7 @@ public class Game {
     private List<Room> rooms;
     private Scanner scanner;
     private GameActions gameActions;
+    private GameUI gameUI;
 
     public static int START_AMOUNT_OF_ROOMS = 10;
 
@@ -21,14 +22,12 @@ public class Game {
         Objects.requireNonNull(scanner);
         this.scanner = scanner;
 
-        gameActions = new GameActions(scanner);
+        gameUI = new GameUI(scanner);
+        gameActions = new GameActions(scanner, gameUI);
 
         initializeRooms();
     }
-//
-//    public Game() {
-//
-//    }
+
 
     private void initializeRooms() {
         rooms = new ArrayList<>();
@@ -38,8 +37,7 @@ public class Game {
         }
     }
 
-    public void runGame(Scanner scanner) {
-        this.scanner = scanner;
+    public void runGame() {
 
         GameUI.printToScreen("Choose a player name: ");
         String name = scanner.nextLine();
@@ -51,19 +49,22 @@ public class Game {
         name = name.strip();
         player = new Player(name, 100, 0);
 
+        gameActions.setPlayer(player);
+
         GameUI.printToScreen(String.format("Welcome %s! You start your journey here...%n", player.getName()));
         GameUI.printWaitingIntervalDots();
 
         while (!rooms.isEmpty() && player.getHealth() > 0) {
             int roomCounter = 0;
 
-            GameActions.encounterRoom(player, rooms.get(roomCounter), scanner);
+            gameActions.setRoom(rooms.get(roomCounter));
+            gameActions.encounterRoom();
 
             rooms.remove(rooms.get(roomCounter));
             roomCounter++;
         }
 
-        if (GameActions.isPlayerDead(player)) {
+        if (gameActions.isPlayerDead(player)) {
             GameUI.printToScreen("""
                     Game over.
                     Better luck next time!

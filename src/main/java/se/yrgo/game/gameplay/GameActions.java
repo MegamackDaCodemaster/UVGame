@@ -16,28 +16,33 @@ public final class GameActions {
     private Player player;
     private Room room;
     private Scanner scanner;
+    private GameUI gameUI;
 
-    public GameActions(Scanner scanner) {
-
+    public GameActions(Scanner scanner, GameUI gameUI) {
         this.scanner = scanner;
+        this.gameUI = gameUI;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
     /**
      * Room encounter logics. Returns true if room was cleared without dying, false otherwise...
      *
-     * @param player the current player
-     * @param room   the room to encounter
      * @return true if all went well, false if player died
      */
-    public boolean encounterRoom(Player player, Room room, Scanner scanner) {
-        //Todo: Don't forget: end of battle, increase score
-
+    public boolean encounterRoom() {
         GameUI.printToScreen(String.format("You step into %s%n", room.getName().toLowerCase()));
         GameUI.printToScreen(String.format("Where you encounter %s! Get ready for battle!!%n",
-                room.getMonster.getPresentation.toLower())); //Todo somehow get the room's monster
+                room.getMonster().getPresentation().toLower()));
         GameUI.pauseTextFlow(2000);
 
-        doBattle(player, room.getMonster);
+        doBattle(player, room.getMonster());
 
         if (isPlayerDead(player)) {
             return false;
@@ -47,7 +52,7 @@ public final class GameActions {
         GameUI.printToScreen(String.format("************************%n"));
 
         if (room.getItem() != null) { //Todo: get the room's item
-            findItem(player, room.getItem, scanner);
+            findItem(player, room.getItem(), scanner);
         }
 
         if (isPlayerDead(player)) {
@@ -58,7 +63,7 @@ public final class GameActions {
         return true;
     }
 
-    public void doBattle(Player player, Monster monster) {
+    private void doBattle(Player player, Monster monster) {
         GameUI.printToScreen(String.format("""
                 - BATTLE WITH %s - 
                 """, monster.getMonsterType().toUpperCase()));
@@ -104,10 +109,10 @@ public final class GameActions {
         }
     }
 
-    public void findItem(Player player, Item item, Scanner scanner) {
+    private void findItem(Player player, Item item) {
         GameUI.printToScreen("What's this? The monster dropped something...");
 
-        GameUI.printToScreen(String.format("You see %s.%n", item.getName)); //Todo: getName method on item.
+        GameUI.printToScreen(String.format("You see %s.%n", item.getName())); //Todo: getName method on item.
 
         GameUI.printToScreen("What do you want to do?");
 
@@ -116,9 +121,9 @@ public final class GameActions {
                 2. Leave it. It might be dangerous. 
                 """));
 
-        var input = getUserInput();
+        var input = getUserInput(new String[] {"1", "2"});
 
-        if (input == 1) {
+        if (input.equals("1")) {
             item.pickup(player);
         } else {
             GameUI.printToScreen("You leave it lying and walk away.");
@@ -130,12 +135,12 @@ public final class GameActions {
         return player.getHealth() <= 0;
     }
 
-    private int getUserInput(int[] possibleChoices) {
-        int input = -1;
+    private String getUserInput(String[] possibleChoices) {
+        String input = "";
 
         while (!Arrays.asList(possibleChoices).contains(input)) { //Todo: test!
             try {
-                input = scanner.nextInt();
+                input = gameUI.getInput();
                 if (!Arrays.asList(possibleChoices).contains(input)) {
                     System.out.println("Wrong input, try again.");
                 }
