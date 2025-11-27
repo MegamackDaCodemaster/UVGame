@@ -14,6 +14,7 @@ public final class GameUI {
     }
 
     public String getInput() {
+        scanner.nextLine(); //Flush
         return scanner.nextLine();
     }
 
@@ -27,7 +28,7 @@ public final class GameUI {
 
     public static void printWaitingIntervalDots() {
         try {
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 5; i++) {
                 System.out.printf(".");
                 Thread.sleep(1000);
             }
@@ -37,9 +38,4 @@ public final class GameUI {
         System.out.println();
     }
 
-    public void flushScanner() {
-        while (scanner.hasNext()) {
-            scanner.nextLine();
-        }
-    }
 }

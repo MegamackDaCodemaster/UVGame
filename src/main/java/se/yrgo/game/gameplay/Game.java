@@ -40,7 +40,8 @@ public class Game {
     public void runGame() {
 
         GameUI.printToScreen("Choose a player name: ");
-        String name = scanner.nextLine();
+
+        String name = gameUI.getInput();
 
         if (name == null || name.isBlank()) {
             GameUI.printToScreen("Incompatible name format. Your name is now 'Humble Hero'!");

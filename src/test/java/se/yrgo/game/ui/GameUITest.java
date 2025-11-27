@@ -11,25 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameUITest {
     GameUI gameUI;
 
-    void createCustomTestInput(String mockInput) {
-        ByteArrayInputStream bais = new ByteArrayInputStream(mockInput.getBytes());
-        System.setIn(bais);
-    }
+//    void createCustomTestInput(String mockInput) {
+//        ByteArrayInputStream bais = new ByteArrayInputStream(mockInput.getBytes());
+//        System.setIn(bais);
+//    }
 
-    @Test
-    void clearScannerBuffer_withMockInput() {
-        try {
-            createCustomTestInput("Blablabla");
-            Scanner scanner = new Scanner(System.in);
-
-            assertTrue(scanner.hasNext());
-            gameUI = new GameUI(scanner);
-
-            gameUI.flushScanner();
-            assertFalse(scanner.hasNext());
-        }
-        catch (Exception e) {
-            fail("Should not throw on this test.", e);
-        }
-    }
 }
