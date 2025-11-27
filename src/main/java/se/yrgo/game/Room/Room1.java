@@ -43,7 +43,7 @@ public class Room1 implements Room {
 
     // ---- Monster handling ----
     @Override
-    public List<Monster> getMonsters() {
+    public List<Monster> getMonster() {
         return monsters;
     }
 
@@ -59,7 +59,7 @@ public class Room1 implements Room {
 
     // ---- Item handling ----
     @Override
-    public List<Item> getItems() {
+    public List<Item> getItem() {
         return items;
     }
 

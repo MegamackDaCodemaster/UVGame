@@ -13,11 +13,11 @@ public interface Room {
 
     void setNextRoom(Room nextRoom);
 
-    List<Monster> getMonsters();
+    List<Monster> getMonster();
     void addMonster(Monster monster);
     void removeMonster(Monster monster);
 
-    List<Item> getItems();
+    List<Item> getItem();
     void addItem(Item item);
     void removeItem(Item item);
 
