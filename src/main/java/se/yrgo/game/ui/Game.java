@@ -2,15 +2,14 @@ package se.yrgo.game.ui;
 
 import se.yrgo.game.items.Item;
 import se.yrgo.game.player.Player;
-import se.yrgo.game.Room.Room;
-import se.yrgo.game.Room.RoomMain;
+import se.yrgo.game.Room.Room1;
 import se.yrgo.game.monster.Monster;
 
 import java.util.*;
 
 public class Game {
     private Player player; //Initialized in runGame method
-    private List<Room> rooms;
+    private List<Room1> room1s;
     private int numberOfRoomsInGame;
     private Scanner scanner; //Todo: init in constructor
 
@@ -20,10 +19,10 @@ public class Game {
     }
 
     private void initializeRooms() {
-        rooms = new ArrayList<>();
+        room1s = new ArrayList<>();
 
         for (int i = 0; i < numberOfRoomsInGame; i++) {
-            rooms.add(RoomMain.getRoom()); //Todo: Need a method for getting a room object
+            room1s.add(RoomMain.getRoom()); //Todo: Need a method for getting a room object
         }
     }
 
@@ -43,12 +42,12 @@ public class Game {
         System.out.printf("Welcome %s! You start your journey here...%n", player.getName());
         printWaitingIntervalDots();
 
-        while (!rooms.isEmpty() && player.getHealth() > 0) {
+        while (!room1s.isEmpty() && player.getHealth() > 0) {
             int roomCounter = 0;
 
-            encounterRoom(player, rooms.get(roomCounter));
+            encounterRoom(player, room1s.get(roomCounter));
 
-            rooms.remove(rooms.get(roomCounter));
+            room1s.remove(room1s.get(roomCounter));
             roomCounter++;
         }
 
@@ -66,18 +65,18 @@ public class Game {
      * Room encounter logics. Returns true if room was cleared without dying, false otherwise...
      *
      * @param player the current player
-     * @param room   the room to encounter
+     * @param room1   the room to encounter
      * @return true if all went well, false if player died
      */
-    private boolean encounterRoom(Player player, Room room) {
+    private boolean encounterRoom(Player player, Room1 room1) {
         //Todo: Don't forget: end of battle, increase score
 
-        System.out.printf("You step into %s%n", room.getName().toLowerCase());
+        System.out.printf("You step into %s%n", room1.getName().toLowerCase());
         System.out.printf("Where you encounter %s! Get ready for battle!!%n",
-                room.getMonster.getPresentation.toLower()); //Todo somehow get the room's monster
+                room1.getMonster.getPresentation.toLower()); //Todo somehow get the room's monster
         pauseTextFlow(2000);
 
-        doBattle(player, room.getMonster);
+        doBattle(player, room1.getMonster);
 
         if (isPlayerDead(player)) {
             return false;
@@ -86,8 +85,8 @@ public class Game {
         pauseTextFlow(2000);
         System.out.println("************************\n");
 
-        if (room.getItem() != null) { //Todo: get the room's item
-            findItem(player, room.getItem);
+        if (room1.getItem() != null) { //Todo: get the room's item
+            findItem(player, room1.getItem);
         }
 
         if (isPlayerDead(player)) {
