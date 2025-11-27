@@ -21,7 +21,7 @@ class GameTest {
 //    }
 
     @Test
-    void input() {
-
+    void runGame() {
+        game.runGame();
     }
 }

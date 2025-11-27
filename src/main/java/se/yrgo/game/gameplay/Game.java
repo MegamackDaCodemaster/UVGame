@@ -2,6 +2,8 @@ package se.yrgo.game.gameplay;
 
 import se.yrgo.game.Room.Room1;
 import se.yrgo.game.items.Item;
+import se.yrgo.game.items.Potion;
+import se.yrgo.game.monster.Troll;
 import se.yrgo.game.player.Player;
 import se.yrgo.game.Room.Room;
 import se.yrgo.game.monster.Monster;
@@ -9,12 +11,12 @@ import se.yrgo.game.ui.GameUI;
 
 import java.util.*;
 
-public class Game {
+public final class Game {
     private Player player; //todo move to constructor and get method for setting name
     private List<Room> rooms;
-    private Scanner scanner;
-    private GameActions gameActions;
-    private GameUI gameUI;
+    private final Scanner scanner;
+    private final GameActions gameActions;
+    private final GameUI gameUI;
 
     public static int START_AMOUNT_OF_ROOMS = 10;
 
@@ -32,25 +34,19 @@ public class Game {
     private void initializeRooms() {
         rooms = new ArrayList<>();
 
-        rooms.add(new Room1("Cave", "A dark and creepy cave") {
-        });
+        Monster monster = new Troll();
+        Item item = new Potion("Health potion", 50);
+        Room room = new Room1("Cave", "A dark and creepy cave");
+        room.addMonster(monster);
+        room.addItem(item);
+
+        rooms.add(room);
 
     }
 
     public void runGame() {
 
-        GameUI.printToScreen("Choose a player name: ");
-
-        String name = gameUI.getInput();
-
-        if (name == null || name.isBlank()) {
-            GameUI.printToScreen("Incompatible name format. Your name is now 'Humble Hero'!");
-            name = "Humble Hero";
-        }
-        name = name.strip();
-        player = new Player(name, 100, 0);
-
-        gameActions.setPlayer(player);
+        setUpPlayer();
 
         GameUI.printToScreen(String.format("Welcome %s! You start your journey here...%n", player.getName()));
         GameUI.printWaitingIntervalDots();
@@ -80,5 +76,20 @@ public class Game {
                     Final score: %d
                     """, player.getName(), player.getScore()));
         }
+    }
+
+    private void setUpPlayer() {
+        GameUI.printToScreen("Choose a player name: ");
+
+        String name = gameUI.getInput();
+
+        if (name == null || name.isBlank()) {
+            GameUI.printToScreen("Incompatible name format. Your name is now 'The Humble Hero'!");
+            name = "The Humble Hero";
+        }
+        name = name.strip();
+        player = new Player(name, 100, 0);
+
+        gameActions.setPlayer(player);
     }
 }
