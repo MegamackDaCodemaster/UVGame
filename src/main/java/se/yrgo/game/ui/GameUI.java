@@ -36,4 +36,10 @@ public final class GameUI {
         }
         System.out.println();
     }
+
+    public void flushScanner() {
+        while (scanner.hasNext()) {
+            scanner.nextLine();
+        }
+    }
 }
