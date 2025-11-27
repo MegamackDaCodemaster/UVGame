@@ -8,15 +8,17 @@ public final class Troll implements Monster {
     private final String presentation;
     private int health;
     private final int rewardPoints;
-    private final int attackDamage;
+    private final int strength;
     private final Random random;
 
-    //Todo: Fix randomized damage infliction
+    /**
+     * Constructs a default {@code Troll} with pre-defined stats.
+     */
     public Troll() {
         this("troll", "A hideous troll", 30, 100, 25);
     }
 
-    public Troll(String monsterType, String presentation, int rewardPoints, int health, int attackDamage) {
+    public Troll(String monsterType, String presentation, int rewardPoints, int health, int strength) {
         Objects.requireNonNull(monsterType, "The parameter 'monsterType' is required for this constructor");
         Objects.requireNonNull(presentation, "The parameter 'presentation' is required for this constructor");
 
@@ -24,7 +26,7 @@ public final class Troll implements Monster {
             throw new IllegalArgumentException("The health value need to be more than 0.");
         }
 
-        if (attackDamage <= 0) {
+        if (strength <= 0) {
             throw new IllegalArgumentException("The strength value need to be more than 0.");
         }
 
@@ -32,7 +34,7 @@ public final class Troll implements Monster {
         this.presentation = presentation;
         this.rewardPoints = rewardPoints;
         this.health = health;
-        this.attackDamage = attackDamage;
+        this.strength = strength;
         this.random = new Random();
     }
 
@@ -58,8 +60,13 @@ public final class Troll implements Monster {
     }
 
     @Override
-    public int getAttackDamage() {
-        return random.nextInt(1, attackDamage + 1);
+    public int getStrength() {
+        return strength;
+    }
+
+    @Override
+    public int getRandomAttack() {
+        return random.nextInt(1, strength + 1);
     }
 
     @Override
