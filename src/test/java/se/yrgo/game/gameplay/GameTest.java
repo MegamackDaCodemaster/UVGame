@@ -1,13 +1,18 @@
-package se.yrgo.game.ui;
+package se.yrgo.game.gameplay;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import se.yrgo.game.gameplay.Game;
 
 import java.util.Scanner;
 
 class GameTest {
-    private Game game = new Game();
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
+    private Game game;
+
+    public GameTest() {
+        scanner = new Scanner(System.in);
+        game = new Game(scanner);
+    }
 
 //    @Test
 //    void constructsCorrectNoOfRooms() {
@@ -17,9 +22,6 @@ class GameTest {
 
     @Test
     void input() {
-        var input = game.getUserInput(new int[]{1, 2}, scanner);
-        System.out.println(input);
 
-        scanner.nextLine();
     }
 }

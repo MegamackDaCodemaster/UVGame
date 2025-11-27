@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static se.yrgo.game.ui.GameUI.*;
 
 public final class GameActions {
     private Player player;
@@ -51,7 +50,7 @@ public final class GameActions {
         GameUI.pauseTextFlow(2000);
         GameUI.printToScreen(String.format("************************%n"));
 
-        if (room.getItem() != null) { //Todo: get the room's item
+        if (room.getItem() != null) {
             findItem(player, room.getItem());
         }
 
@@ -112,7 +111,7 @@ public final class GameActions {
     private void findItem(Player player, Item item) {
         GameUI.printToScreen("What's this? The monster dropped something...");
 
-        GameUI.printToScreen(String.format("You see %s.%n", item.getName())); //Todo: getName method on item.
+//        GameUI.printToScreen(String.format("You see %s.%n", item.getName())); //Todo: getName method on item.
 
         GameUI.printToScreen("What do you want to do?");
 
