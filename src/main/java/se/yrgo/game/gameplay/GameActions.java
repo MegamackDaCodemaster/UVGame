@@ -40,7 +40,7 @@ public final class GameActions {
         GameUI.printToScreen(String.format("You step into %s%n", room.getDescription().toLowerCase()));
         GameUI.pauseTextFlow(1000);
         GameUI.printToScreen(String.format("...Where you encounter %s! Get ready for battle!!%n",
-                room.getMonster().getDescription().toLowerCase()));
+                room.getMonster().getDescription()));
         gameUI.waitForKeyPress();
 
         doBattle(player, room.getMonster());
@@ -50,7 +50,6 @@ public final class GameActions {
         }
 
         GameUI.pauseTextFlow(1000);
-        GameUI.printToScreen(String.format("************************%n"));
 
         if (room.getItem() != null) {
             findItem(player, room.getItem());
@@ -61,6 +60,7 @@ public final class GameActions {
         }
 
         GameUI.printToScreen("You exit the room.%n");
+        GameUI.printToScreen(String.format("%n************************%n%n"));
         gameUI.waitForKeyPress();
         return true;
     }
@@ -79,18 +79,19 @@ public final class GameActions {
                     monster.getMonsterName(), monster.getHealth()));
 
             gameUI.waitForKeyPress();
-            GameUI.printToScreen(String.format("%s charges the %s!%n", player.getName(), monster.getMonsterName()));
+            GameUI.printToScreen(String.format("%s charges the %s!%n",
+                    player.getName(), monster.getMonsterName().toLowerCase()));
 
             int damage = player.getAttackDamage();
             monster.wound(damage);
             GameUI.pauseTextFlow(1500);
 
             GameUI.printToScreen(String.format("You inflicted %d points of damage to the %s!%n",
-                    damage, monster.getMonsterName()));
+                    damage, monster.getMonsterName().toLowerCase()));
             gameUI.waitForKeyPress();
 
             if (monster.getHealth() <= 0) {
-                GameUI.printToScreen(String.format("You killed the %s!%n", monster.getMonsterName()));
+                GameUI.printToScreen(String.format("You killed the %s!%n", monster.getMonsterName().toLowerCase()));
                 gameUI.waitForKeyPress();
                 break;
             }

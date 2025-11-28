@@ -73,6 +73,7 @@ public final class Game {
 
         if (gameActions.isPlayerDead(player)) {
             GameUI.printToScreen(String.format("""
+                    You died.
                     Game over.
                     Better luck next time!
                     """));
@@ -80,7 +81,7 @@ public final class Game {
             gameUI.waitForKeyPress();
         } else {
             GameUI.printToScreen(String.format("""
-                    At last, %s steps out of the last room and reaches the goal...
+                    At last, %s steps out of the final room and reaches the goal...
                     
                     You have cleared the game!!
                     
