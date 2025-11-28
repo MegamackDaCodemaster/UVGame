@@ -40,7 +40,7 @@ public final class GameActions {
         GameUI.printToScreen(String.format("You step into %s%n", room.getDescription().toLowerCase()));
         GameUI.pauseTextFlow(1000);
         GameUI.printToScreen(String.format("...Where you encounter %s! Get ready for battle!!%n",
-                room.getMonster().getPresentation().toLowerCase()));
+                room.getMonster().getDescription().toLowerCase()));
         gameUI.waitForKeyPress();
 
         doBattle(player, room.getMonster());
@@ -68,7 +68,7 @@ public final class GameActions {
     private void doBattle(Player player, Monster monster) {
         GameUI.printToScreen(String.format("""
                 - BATTLE WITH %s - 
-                """, monster.getMonsterType().toUpperCase()));
+                """, monster.getMonsterName().toUpperCase()));
 
         while (!isPlayerDead(player) && monster.getHealth() > 0) {
             GameUI.printToScreen(String.format("""
@@ -76,21 +76,21 @@ public final class GameActions {
                             %s: %d HP left
                             """,
                     player.getName(), player.getHealth(),
-                    monster.getMonsterType(), monster.getHealth()));
+                    monster.getMonsterName(), monster.getHealth()));
 
             gameUI.waitForKeyPress();
-            GameUI.printToScreen(String.format("%s charges the %s!%n", player.getName(), monster.getMonsterType()));
+            GameUI.printToScreen(String.format("%s charges the %s!%n", player.getName(), monster.getMonsterName()));
 
             int damage = player.getAttackDamage();
             monster.wound(damage);
             GameUI.pauseTextFlow(1500);
 
             GameUI.printToScreen(String.format("You inflicted %d points of damage to the %s!%n",
-                    damage, monster.getMonsterType()));
+                    damage, monster.getMonsterName()));
             gameUI.waitForKeyPress();
 
             if (monster.getHealth() <= 0) {
-                GameUI.printToScreen(String.format("You killed the %s!%n", monster.getMonsterType()));
+                GameUI.printToScreen(String.format("You killed the %s!%n", monster.getMonsterName()));
                 gameUI.waitForKeyPress();
                 break;
             }
