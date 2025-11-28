@@ -20,6 +20,7 @@ public final class Game {
     private final GameUI gameUI;
 
     public static int START_AMOUNT_OF_ROOMS = 10;
+    public static String DEFAULT_PLAYER_NAME = "The Humble Hero";
 
     public Game(Scanner scanner) {
         Objects.requireNonNull(scanner);
@@ -35,6 +36,8 @@ public final class Game {
     private void initializeRooms() {
         rooms = new ArrayList<>();
 
+        //Todo below is test data, needs proper init later.
+
         Monster monster = new Troll();
         Item item = new Potion("Health potion", 50);
         Room room = new Room1("Cave", "A dark and creepy cave");
@@ -46,12 +49,6 @@ public final class Game {
     }
 
     public void runGame() {
-//        try {
-//            gameUI.testKey();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-
         setUpPlayer();
 
         GameUI.printToScreen(String.format("""
@@ -100,12 +97,20 @@ public final class Game {
         String name = gameUI.getInput();
 
         if (name == null || name.isBlank()) {
-            GameUI.printToScreen(String.format("Incompatible name format. Your name is now 'The Humble Hero'!%n%n"));
-            name = "The Humble Hero";
+            GameUI.printToScreen(String.format("Incompatible name format. Your name is now '%s'!%n%n", DEFAULT_PLAYER_NAME));
+            name = DEFAULT_PLAYER_NAME;
         }
         name = name.strip();
         player = new Player(name, 100, 0);
 
         gameActions.setPlayer(player);
+    }
+
+    /**
+     * A package private method for test purposes.
+     * @return
+     */
+    Player getPlayer(){
+        return player;
     }
 }

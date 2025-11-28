@@ -1,5 +1,6 @@
 package se.yrgo.game.gameplay;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import se.yrgo.game.Room.Room;
@@ -61,5 +62,10 @@ class GameActionsTest {
 
         assertTrue(gameActions.encounterRoom());
         assertTrue(player.getHealth() > 20_000);
+    }
+
+    @AfterEach
+    void closeScanner(){
+        scanner.close();
     }
 }
