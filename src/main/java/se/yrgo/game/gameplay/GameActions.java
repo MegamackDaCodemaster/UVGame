@@ -37,9 +37,10 @@ public final class GameActions {
      */
     public boolean encounterRoom() {
         GameUI.printToScreen(String.format("You step into %s%n", room.getName().toLowerCase()));
-        GameUI.printToScreen(String.format("Where you encounter %s! Get ready for battle!!%n",
-                room.getMonster().getPresentation().toUpperCase()));
-        GameUI.pauseTextFlow(2000);
+        GameUI.pauseTextFlow(1000);
+        GameUI.printToScreen(String.format("...Where you encounter %s! Get ready for battle!!%n",
+                room.getMonster().getPresentation().toLowerCase()));
+        gameUI.waitForKeyPress();
 
         doBattle(player, room.getMonster());
 
@@ -47,7 +48,7 @@ public final class GameActions {
             return false;
         }
 
-        GameUI.pauseTextFlow(2000);
+        GameUI.pauseTextFlow(1000);
         GameUI.printToScreen(String.format("************************%n"));
 
         if (room.getItem() != null) {
@@ -58,7 +59,8 @@ public final class GameActions {
             return false;
         }
 
-        GameUI.printToScreen("You exit the room.");
+        GameUI.printToScreen("You exit the room.%n");
+        gameUI.waitForKeyPress();
         return true;
     }
 
@@ -75,45 +77,49 @@ public final class GameActions {
                     player.getName(), player.getHealth(),
                     monster.getMonsterType(), monster.getHealth()));
 
-            GameUI.pauseTextFlow(1500);
-            GameUI.printToScreen(String.format("%s charges the %s!", player.getName(), monster.getMonsterType()));
+            gameUI.waitForKeyPress();
+            GameUI.printToScreen(String.format("%s charges the %s!%n", player.getName(), monster.getMonsterType()));
 
             int damage = player.getAttackDamage();
             monster.wound(damage);
+            GameUI.pauseTextFlow(1500);
 
             GameUI.printToScreen(String.format("You inflicted %d points of damage to the %s!%n",
                     damage, monster.getMonsterType()));
-            GameUI.pauseTextFlow(1500);
+            gameUI.waitForKeyPress();
 
             if (monster.getHealth() <= 0) {
                 GameUI.printToScreen(String.format("You killed the %s!%n", monster.getMonsterType()));
+                gameUI.waitForKeyPress();
                 break;
             }
 
-            GameUI.printToScreen(String.format("It's still alive and kicking "));
-            GameUI.printWaitingIntervalDots();
+            GameUI.printToScreen("It's still alive and kicking... ");
+            GameUI.pauseTextFlow(1500);
             GameUI.printToScreen(String.format("you!!%n"));
-            GameUI.pauseTextFlow(1000);
+            GameUI.pauseTextFlow(1500);
 
             int monsterAttackDamage = monster.getRandomAttack();
             player.decreaseHealth(monsterAttackDamage);
-            GameUI.printToScreen(String.format("You take %d points of damage! Ouch!", monsterAttackDamage));
-            GameUI.pauseTextFlow(1000);
+            GameUI.printToScreen(String.format("You take %d points of damage! Ouch!%n", monsterAttackDamage));
+            gameUI.waitForKeyPress();
         }
 
         if (!isPlayerDead(player)) {
             player.increaseScore(monster.getRewardPoints());
-            GameUI.printToScreen(String.format("Congratulations! You won the battle! You earned %d victory points!",
+            GameUI.printToScreen(String.format("Congratulations! You won the battle! You earned %d victory points!%n",
                     monster.getRewardPoints()));
+            gameUI.waitForKeyPress();
         }
     }
 
     private void findItem(Player player, Item item) {
-        GameUI.printToScreen("What's this? The monster dropped something...");
+        GameUI.printToScreen("What's this? The monster dropped something...%n");
+        gameUI.waitForKeyPress();
 
-//        GameUI.printToScreen(String.format("You see %s.%n", item.getName())); //Todo: getName method on item.
+//        GameUI.printToScreen(String.format("You see a %s.%n", item.getName())); //Todo: getName method on item.
 
-        GameUI.printToScreen("What do you want to do?");
+        GameUI.printToScreen("What do you want to do?%n");
 
         GameUI.printToScreen(String.format("""
                 1. Pick it up and use. YOLO!
@@ -124,8 +130,10 @@ public final class GameActions {
 
         if (input.equals("1")) {
             item.pickup(player);
+            gameUI.waitForKeyPress();
         } else {
-            GameUI.printToScreen("You leave it lying and walk away.");
+            GameUI.printToScreen(String.format("You leave it lying and walk away.%n"));
+            gameUI.waitForKeyPress();
         }
     }
 
@@ -141,10 +149,10 @@ public final class GameActions {
             try {
                 input = gameUI.getInput();
                 if (!Arrays.asList(possibleChoices).contains(input)) {
-                    GameUI.printToScreen("Wrong input, try again.");
+                    GameUI.printToScreen(String.format("Wrong input, try again.%n"));
                 }
             } catch (InputMismatchException e) {
-                GameUI.printToScreen("Wrong input, try again: ");
+                GameUI.printToScreen(String.format("Wrong input, try again.%n"));
             }
         }
         return input;
