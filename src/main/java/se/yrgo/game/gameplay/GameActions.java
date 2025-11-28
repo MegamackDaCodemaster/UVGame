@@ -36,7 +36,7 @@ public final class GameActions {
      * @return true if all went well, false if player died
      */
     public boolean encounterRoom() {
-        GameUI.printToScreen(String.format("You step into %s%n", room.getName().toLowerCase()));
+        GameUI.printToScreen(String.format("You step into %s%n", room.getDescription().toLowerCase()));
         GameUI.pauseTextFlow(1000);
         GameUI.printToScreen(String.format("...Where you encounter %s! Get ready for battle!!%n",
                 room.getMonster().getPresentation().toLowerCase()));
@@ -117,7 +117,7 @@ public final class GameActions {
         GameUI.printToScreen("What's this? The monster dropped something...%n");
         gameUI.waitForKeyPress();
 
-//        GameUI.printToScreen(String.format("You see a %s.%n", item.getName())); //Todo: getName method on item.
+        GameUI.printToScreen(String.format("You see a %s.%n", item.getName())); //Todo: getName method on item.
 
         GameUI.printToScreen("What do you want to do?%n");
 
