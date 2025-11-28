@@ -54,7 +54,14 @@ public final class Game {
 
         setUpPlayer();
 
-        GameUI.printToScreen(String.format("Welcome %s! You start your journey here...%n", player.getName()));
+        GameUI.printToScreen(String.format("""
+                %nWelcome %s!
+                In this game you will be informed of game events in text-form.
+                When you have read the text and wish to continue, press enter once:
+                """, player.getName()));
+        gameUI.waitForKeyPress();
+
+        GameUI.printToScreen(String.format("Excellent. Now, your journey may start...%n"));
         GameUI.printWaitingIntervalDots(5);
 
         while (!rooms.isEmpty() && player.getHealth() > 0) {
