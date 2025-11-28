@@ -13,6 +13,7 @@ import se.yrgo.game.player.Player;
 import se.yrgo.game.ui.GameUI;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.Scanner;
 
 
@@ -56,7 +57,7 @@ class GameActionsTest {
     }
 
     @Test
-    void encounterRoomSafely_PickUpItemHealthPotion(){
+    void encounterRoomSafely_PickUpItemHealthPotion() {
         this.scanner = new Scanner(encounterRoomInput_PickUpItemChoice);
         setUp(scanner);
 
@@ -64,8 +65,18 @@ class GameActionsTest {
         assertTrue(player.getHealth() > 20_000);
     }
 
+    @Test
+    void exitIfPlayerIsKilledInBattle() {
+        String inputThatWorksWhenPlayerIsKilledInOneStrike = "\n\n\n\n";
+        this.scanner = new Scanner(inputThatWorksWhenPlayerIsKilledInOneStrike);
+        setUp(scanner);
+
+        player.decreaseHealth(99);
+        assertFalse(gameActions.encounterRoom());
+    }
+
     @AfterEach
-    void closeScanner(){
+    void closeScanner() {
         scanner.close();
     }
 }
