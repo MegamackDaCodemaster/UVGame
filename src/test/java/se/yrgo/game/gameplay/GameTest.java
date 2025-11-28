@@ -10,7 +10,7 @@ class GameTest {
     private Game game;
 
     public GameTest() {
-        scanner = new Scanner("mock player");
+        scanner = new Scanner("mock hero");
         game = new Game(scanner);
     }
 
@@ -24,4 +24,6 @@ class GameTest {
     void runGame() {
         game.runGame();
     }
+
+
 }

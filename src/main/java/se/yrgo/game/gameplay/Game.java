@@ -9,6 +9,7 @@ import se.yrgo.game.Room.Room;
 import se.yrgo.game.monster.Monster;
 import se.yrgo.game.ui.GameUI;
 
+import java.io.IOException;
 import java.util.*;
 
 public final class Game {
@@ -45,11 +46,23 @@ public final class Game {
     }
 
     public void runGame() {
+//        try {
+//            gameUI.testKey();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
         setUpPlayer();
 
-        GameUI.printToScreen(String.format("Welcome %s! You start your journey here...%n", player.getName()));
-        GameUI.printWaitingIntervalDots();
+        GameUI.printToScreen(String.format("""
+                %nWelcome %s!
+                In this game you will be informed of game events in text-form.
+                When you have read the text and wish to continue, press enter once:
+                """, player.getName()));
+        gameUI.waitForKeyPress();
+
+        GameUI.printToScreen(String.format("Excellent. Now, your journey may start...%n"));
+        GameUI.printWaitingIntervalDots(5);
 
         while (!rooms.isEmpty() && player.getHealth() > 0) {
             int roomCounter = 0;
@@ -62,12 +75,13 @@ public final class Game {
         }
 
         if (gameActions.isPlayerDead(player)) {
-            GameUI.printToScreen("""
+            GameUI.printToScreen(String.format("""
                     Game over.
                     Better luck next time!
-                    """);
-        }
-        else {
+                    """));
+
+            gameUI.waitForKeyPress();
+        } else {
             GameUI.printToScreen(String.format("""
                     At last, %s steps out of the last room and reaches the goal...
                     
@@ -75,6 +89,8 @@ public final class Game {
                     
                     Final score: %d
                     """, player.getName(), player.getScore()));
+
+            gameUI.waitForKeyPress();
         }
     }
 
@@ -84,7 +100,7 @@ public final class Game {
         String name = gameUI.getInput();
 
         if (name == null || name.isBlank()) {
-            GameUI.printToScreen("Incompatible name format. Your name is now 'The Humble Hero'!");
+            GameUI.printToScreen(String.format("Incompatible name format. Your name is now 'The Humble Hero'!%n%n"));
             name = "The Humble Hero";
         }
         name = name.strip();

@@ -3,6 +3,7 @@ package se.yrgo.game.ui;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -16,4 +17,14 @@ class GameUITest {
 //        System.setIn(bais);
 //    }
 
+    @Test
+    void test() {
+        gameUI = new GameUI(new Scanner(System.in));
+
+        try {
+            gameUI.testKey();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
