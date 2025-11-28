@@ -4,8 +4,8 @@ import java.util.Objects;
 import java.util.Random;
 
 public final class Troll implements Monster {
-    private final String monsterType;
-    private final String presentation;
+    private final String monsterName;
+    private final String description;
     private int health;
     private final int rewardPoints;
     private final int strength;
@@ -18,9 +18,9 @@ public final class Troll implements Monster {
         this("Troll", "A hideous troll", 30, 50, 25);
     }
 
-    public Troll(String monsterType, String presentation, int rewardPoints, int health, int strength) {
-        Objects.requireNonNull(monsterType, "The parameter 'monsterType' is required for this constructor");
-        Objects.requireNonNull(presentation, "The parameter 'presentation' is required for this constructor");
+    public Troll(String monsterName, String description, int rewardPoints, int health, int strength) {
+        Objects.requireNonNull(monsterName, "The parameter 'monsterName' is required for this constructor");
+        Objects.requireNonNull(description, "The parameter 'description' is required for this constructor");
 
         if (health <= 0) {
             throw new IllegalArgumentException("The health value need to be more than 0.");
@@ -30,8 +30,8 @@ public final class Troll implements Monster {
             throw new IllegalArgumentException("The strength value need to be more than 0.");
         }
 
-        this.monsterType = monsterType;
-        this.presentation = presentation;
+        this.monsterName = monsterName;
+        this.description = description;
         this.rewardPoints = rewardPoints;
         this.health = health;
         this.strength = strength;
@@ -40,13 +40,13 @@ public final class Troll implements Monster {
 
 
     @Override
-    public String getMonsterType() {
-        return monsterType;
+    public String getMonsterName() {
+        return monsterName;
     }
 
     @Override
-    public String getPresentation() {
-        return presentation;
+    public String getDescription() {
+        return description;
     }
 
     @Override
