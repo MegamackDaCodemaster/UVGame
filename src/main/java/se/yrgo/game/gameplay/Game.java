@@ -29,7 +29,7 @@ public final class Game {
         gameUI = new GameUI(scanner);
         gameActions = new GameActions(scanner, gameUI);
 
-        initializeRooms();
+        initializeRooms(); //Todo Move to Roomfactory class!
     }
 
 
@@ -61,7 +61,7 @@ public final class Game {
         GameUI.printToScreen(String.format("Excellent. Now, your journey may start...%n"));
         GameUI.printWaitingIntervalDots(5);
 
-        while (!rooms.isEmpty() && player.getHealth() > 0) {
+        while (!rooms.isEmpty() && !gameActions.isPlayerDead(player)) {
             int roomCounter = 0;
 
             gameActions.setRoom(rooms.get(roomCounter));

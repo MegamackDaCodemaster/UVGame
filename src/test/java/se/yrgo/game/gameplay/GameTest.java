@@ -6,12 +6,14 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class GameTest {
     private Scanner scanner;
     private Game game;
 
     String badPlayerNameInput = "\n \n";
+    String examplePlayerNameInput = "\nA name\n";
 
     void setUp(String input) {
         scanner = new Scanner(input);
@@ -26,13 +28,31 @@ class GameTest {
         try {
             game.runGame();
         } catch (NoSuchElementException e) {
-            System.out.println("This test's mock input only covers the test purpose, then NSE Exception is thrown.");
+            System.out.println("This test's mock input only covers the test purpose, then NoSuchElementException is thrown.");
         } finally {
             assertEquals(Game.DEFAULT_PLAYER_NAME, game.getPlayer().getName());
         }
     }
 
+    @Test
+    void testPlayerChooseName() {
+        setUp(examplePlayerNameInput);
 
+        try {
+            game.runGame();
+        } catch (NoSuchElementException e) {
+            System.out.println("This test's mock input only covers the test purpose, then NoSuchElementException is thrown.");
+        } finally {
+            assertEquals("A name", game.getPlayer().getName());
+        }
+    }
+
+
+    @Test
+    void throwWhenNoScannerArgInConstructor(){
+        assertThrows(NullPointerException.class, () ->
+                new Game(null));
+    }
 //    @Test
 //    void constructsCorrectNoOfRooms() {
 //        var testGame = new Game();
