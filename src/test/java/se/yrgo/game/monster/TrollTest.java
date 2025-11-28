@@ -17,7 +17,7 @@ class TrollTest {
                 5000);
 
         assertInstanceOf(Troll.class, customTroll);
-        assertEquals("custum-made troll", customTroll.getMonsterType());
+        assertEquals("custum-made troll", customTroll.getMonsterName());
         assertEquals(5000, customTroll.getStrength());
     }
 
@@ -38,8 +38,17 @@ class TrollTest {
         assertThrows(IllegalArgumentException.class, () -> {
                     var customTroll = new Troll("custum-made troll",
                             "A horrible monster of a troll",
-                            0,
+                            50,
                             -10,
+                            50);
+                }
+        );
+
+        assertThrows(IllegalArgumentException.class, () -> {
+                    var customTroll = new Troll("custum-made troll",
+                            "A horrible monster of a troll",
+                            50,
+                            50,
                             0);
                 }
         );
