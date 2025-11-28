@@ -1,11 +1,10 @@
 package se.yrgo.game.monster;
 
 public interface Monster {
-//    String doBattle(Player player);
 
-    String getMonsterType(); //Todo: Rename
+    String getMonsterName();
 
-    String getPresentation();
+    String getDescription();
 
     int getRewardPoints();
 
