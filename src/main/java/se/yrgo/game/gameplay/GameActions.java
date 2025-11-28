@@ -8,6 +8,7 @@ import se.yrgo.game.ui.GameUI;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 
@@ -126,9 +127,9 @@ public final class GameActions {
                 2. Leave it. It might be dangerous. 
                 """));
 
-        var input = getUserInput(new String[] {"1", "2"});
+        var input = getUserInput(new String[]{"1", "2"});
 
-        if (input.equals("1")) {
+        if (input.contains("1")) {
             item.pickup(player);
             gameUI.waitForKeyPress();
         } else {
@@ -153,6 +154,9 @@ public final class GameActions {
                 }
             } catch (InputMismatchException e) {
                 GameUI.printToScreen(String.format("Wrong input, try again.%n"));
+            } catch (NoSuchElementException e) {
+                System.err.printf("Error when reading input, there was no line in buffer to read.", e);
+                break;
             }
         }
         return input;

@@ -1,5 +1,6 @@
 package se.yrgo.game.ui;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -10,21 +11,19 @@ import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameUITest {
-    GameUI gameUI;
+    private GameUI gameUI;
+    private String mockInput = "line1\nline2\n";
 
-//    void createCustomTestInput(String mockInput) {
-//        ByteArrayInputStream bais = new ByteArrayInputStream(mockInput.getBytes());
-//        System.setIn(bais);
-//    }
+    @BeforeEach
+    void test() {
+        gameUI = new GameUI(new Scanner(mockInput));
+    }
 
     @Test
-    void test() {
-//        gameUI = new GameUI(new Scanner(System.in));
-//
-//        try {
-//            gameUI.testKey();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+    void getUserInput_afterClearingPreviousLineInBuffer(){
+        var input = gameUI.getInput();
+        assertEquals("line2", input);
     }
+
+
 }
