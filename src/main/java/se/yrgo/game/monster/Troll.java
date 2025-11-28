@@ -65,11 +65,6 @@ public final class Troll implements Monster {
     }
 
     @Override
-    public int getRandomAttack() {
-        return random.nextInt(1, strength + 1);
-    }
-
-    @Override
     public void wound(int hitPoints) {
         if (health > 0 && hitPoints > 0) {
             health -= hitPoints;
