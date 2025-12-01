@@ -4,7 +4,13 @@ import se.yrgo.game.player.Player;
 
 public record Potion(String name, int amount) implements Item {
     @Override
-    public void pickup(Player player) {
+    public String pickup(Player player) {
         player.increaseHealth(amount);
+        return "You drank a potion and your health has been increased with " + amount + " hp";
+    }
+
+    @Override
+    public String getName() {
+        return "";
     }
 }

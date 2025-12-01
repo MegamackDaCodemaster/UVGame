@@ -6,10 +6,11 @@ public class Player {
     private int score;
     private int attackDamage;
 
-    public Player(String name, int health, int score) {
+    public Player(String name, int health, int score, int attackDamage) {
         this.name = name;
         this.health = health;
         this.score = score;
+        this.attackDamage = attackDamage;
     }
 
     public String getName() {
@@ -51,10 +52,6 @@ public class Player {
     }
 
     public int attack(int damageAmount) {
-        return damageAmount;
-    }
-
-    public int wound(int damageAmount) {
         return damageAmount;
     }
 

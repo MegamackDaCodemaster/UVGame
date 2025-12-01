@@ -6,8 +6,9 @@ import java.util.*;
 
 public class StartMenu {
     public static void main(String[] args) {
-        Game game = new Game();
         Scanner scanner = new Scanner(System.in);
+        Game game = new Game(scanner);
+
 
         boolean using = true;
 
@@ -18,7 +19,7 @@ public class StartMenu {
             int menuOption = scanner.nextInt();
 
             switch (menuOption) {
-                case 1 -> game.runGame(scanner);
+                case 1 -> game.runGame();
                 case 2 -> { using = false; break; }
             }
         } while (using);
