@@ -35,15 +35,15 @@ class GameActionsTest {
         gameUI = new GameUI(scanner);
         gameActions = new GameActions(scanner, gameUI);
 
-        player = new Player("Mock Hero", 100, 0);
+        player = new Player("Mock Hero", 100, 0, 20);
         gameActions.setPlayer(player);
 
         monster = new Troll();
         item = new Potion("Health potion", 20_000);
 
-        room = new Room1("library", "a dusty library");
-        room.addMonster(monster);
-        room.addItem(item);
+        room = new Room1("Entrance", "Cold air creeps from the darkness.");
+        room.setMonster(monster);
+        room.setItem(item);
 
         gameActions.setRoom(room);
     }
