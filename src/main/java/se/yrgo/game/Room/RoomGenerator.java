@@ -1,38 +1,43 @@
 package se.yrgo.game.Room;
 
-import se.yrgo.game.monster.Monster;
-import se.yrgo.game.items.Item;
+public class RoomGenerator {
 
-public class RoomGenerator implements Room {
-    private String name;
-    private String description;
+    private static final String[] NAMES = {
+            "Entrance",
+            "Stairwell",
+            "Old Cell",
+            "Flooded Tunnel",
+            "Dark Hallway",
+            "Sacrifice Chamber",
+            "Deep Cavern"
+    };
 
-    private Room nextRoom;
-    private Room previousRoom;
+    private static final String[] DESCRIPTIONS = {
+            "Cold air creeps from the darkness.",
+            "You descend steep stone steps.",
+            "Rusty bars line the walls.",
+            "Water drips from the ceiling.",
+            "Only faint echoes can be heard.",
+            "You smell dried blood.",
+            "You feel a presence watching you."
+    };
 
-    private Monster monster;
-    private Item item;
+    public static Room generateDungeon(int numberOfRooms) {
+        Room start = createRoom(0);
+        Room current = start;
 
-    public RoomGenerator(String name, String description) {
-        this.name = name;
-        this.description = description;
+        for (int i = 1; i < numberOfRooms; i++) {
+            Room next = createRoom(i);
+            current.setNextRoom(next);
+            current = next;
+        }
+
+        return start; // return the top room
     }
 
-    @Override
-    public String getName() {
-        return name;
+    private static Room createRoom(int index) {
+        String name = NAMES[index % NAMES.length];
+        String desc = DESCRIPTIONS[index % DESCRIPTIONS.length];
+        return new Room1(name, desc);
     }
-    @Override
-    public String getDescription() {
-        return description;
-    }
-    @Override
-    public Room getNextRoom() {
-        return nextRoom;
-    }
-    @Override
-    public Room getPreviousRoom() {
-        return previousRoom;
-    }
-
 }
