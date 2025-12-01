@@ -30,9 +30,9 @@ public class DungeonGenerator {
 
         entrance.setItem(new Potion("Elixir of Emberlight", 35));
         stairwell.setItem(new Potion("Elixir of Emberlight", 35));
-        oldCell.setItem(new Potion("Haze Ale", 10));
+        oldCell.setItem(new Beer("Haze Ale", 10));
         darkHallway.setItem(new Beer("wine", 10));
-        darkHallway.setItem(new Potion("Elixer of Emberlight", 35));
+
 
 
         //Order rooms
