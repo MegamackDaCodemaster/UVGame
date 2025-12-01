@@ -17,10 +17,10 @@ public class DungeonGenerator {
 
         List<Room> rooms = new ArrayList<>();
 
-        Room entrance = new Room1("Entrance", "Cold air creeps from the darkness.");
-        Room stairwell = new Room1("Stairwell", "You descend steep stone steps.");
-        Room oldCell = new Room1("Old Cell", "Rusty bars line the walls.");
-        Room darkHallway = new Room1("Dark Hallway", "Only faint echoes can be heard.");
+        Room entrance = new Room1("The Entrance", "Cold air creeps from the darkness.");
+        Room stairwell = new Room1("The Stairwell", "You descend steep stone steps.");
+        Room oldCell = new Room1("An Old Cell", "Rusty bars line the walls.");
+        Room darkHallway = new Room1("The Dark Hallway", "Only faint echoes can be heard.");
 
         // add monsters/items
         entrance.setMonster(new Slime());
@@ -31,7 +31,7 @@ public class DungeonGenerator {
         entrance.setItem(new Potion("Elixir of Emberlight", 35));
         stairwell.setItem(new Potion("Elixir of Emberlight", 35));
         oldCell.setItem(new Beer("Haze Ale", 10));
-        darkHallway.setItem(new Beer("wine", 10));
+        darkHallway.setItem(new Beer("Haze Ale", 10));
 
 
 
