@@ -49,6 +49,7 @@ public class RoomGenerator {
     }
 
     private static Room createRoom(int index) {
+        //Create room
         String name = NAMES[index % NAMES.length];
         String desc = DESCRIPTIONS[index % DESCRIPTIONS.length];
         return new Room1(name, desc);
