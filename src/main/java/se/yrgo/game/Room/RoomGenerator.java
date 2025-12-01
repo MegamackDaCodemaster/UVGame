@@ -1,21 +1,26 @@
 package se.yrgo.game.Room;
 
+import se.yrgo.game.items.Beer;
+import se.yrgo.game.items.Potion;
 import se.yrgo.game.monster.Monster;
 import se.yrgo.game.items.Item;
+import se.yrgo.game.monster.Troll;
 
 //Utility class
 
 public class RoomGenerator {
-    public static Room Dungeon;{
+    public static Room Dungeon() {
 
-        // Create rooms individually
         Room entrance = new Room1("Entrance", "Cold air creeps from the darkness.");
         Room stairwell = new Room1("Stairwell", "You descend steep stone steps.");
         Room oldCell = new Room1("Old Cell", "Rusty bars line the walls.");
         Room darkHallway = new Room1("Dark Hallway", "Only faint echoes can be heard.");
 
-        // Optionally add monsters/items
-        entrance.setMonster(new Monster("Troll"));
+        // add monsters/items
+        entrance.setMonster(new Troll());
+
+        stairwell.setItem(new Potion("Elixir of Emberlight", 35));
+        darkHallway.setItem(new Beer("Haze Ale", 10));
 
 
         // Linked rooms
@@ -23,20 +28,9 @@ public class RoomGenerator {
         stairwell.setNextRoom(oldCell);
         oldCell.setNextRoom(darkHallway);
 
+        return entrance;
     }
 
-    public static void main(String[] args) {
-        Room currentRoom = roomGenerator();
-
-        // Traverse the dungeon
-        while (currentRoom != null) {
-            System.out.println(currentRoom);
-            currentRoom = currentRoom.getNextRoom();
-        }
-    }
-
-    private static Room roomGenerator() {
-    }
 }
 
 
