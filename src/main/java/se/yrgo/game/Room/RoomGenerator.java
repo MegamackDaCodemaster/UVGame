@@ -1,5 +1,10 @@
 package se.yrgo.game.Room;
 
+import se.yrgo.game.monster.Monster;
+import se.yrgo.game.items.Item;
+
+//Utility class
+
 public class RoomGenerator {
 
     private static final String[] NAMES = {
@@ -22,11 +27,19 @@ public class RoomGenerator {
             "You feel a presence watching you."
     };
 
+    private static final String[] MONSTER_NAMES = {
+            "Troll", "EX1", "EX2", "EX3", "EX4", "EX5", "EX6", "EX7",
+    };
+    private static final String[] ITEM_NAMES = {
+            "potion", "example1", "example2", "example3",
+            "example4", "example5", "example6", "example7",
+    };
+
     public static Room generateDungeon(int numberOfRooms) {
         Room start = createRoom(0);
         Room current = start;
 
-        for (int i = 1; i < numberOfRooms; i++) {
+        for (int i = 2; i < numberOfRooms; i++) {
             Room next = createRoom(i);
             current.setNextRoom(next);
             current = next;
@@ -36,6 +49,7 @@ public class RoomGenerator {
     }
 
     private static Room createRoom(int index) {
+        //Create room
         String name = NAMES[index % NAMES.length];
         String desc = DESCRIPTIONS[index % DESCRIPTIONS.length];
         return new Room1(name, desc);
