@@ -25,13 +25,12 @@ public class Player {
         return score;
     }
 
-    public int increaseHealth(int healthAmount) {
+    public void increaseHealth(int healthAmount) {
         health += healthAmount;
-        if (health == 100) {
+        if (health >= 100) {
             health = 100;
-            return health;
+            System.out.println("Health level is MAX!");
         }
-        return health;
     }
 
     public int decreaseHealth(int healthAmount) {
