@@ -2,7 +2,7 @@ package se.yrgo.game.Room;
 
 import se.yrgo.game.monster.Monster;
 import se.yrgo.game.items.Item;
-import java.util.List;
+
 
 public interface Room {
     String getName();
@@ -24,3 +24,5 @@ public interface Room {
     @Override
     String toString();
 }
+
+

@@ -2,8 +2,6 @@ package se.yrgo.game.Room;
 
 import se.yrgo.game.monster.Monster;
 import se.yrgo.game.items.Item;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Room1 implements Room {
 
@@ -13,8 +11,9 @@ public class Room1 implements Room {
     private Room nextRoom;
     private Room previousRoom;
 
-    private List<Monster> monsters = new ArrayList<>();
-    private List<Item> items = new ArrayList<>();
+    // ---MONSTER & ITEM---
+    private Monster monster;
+    private Item item;
 
     public Room1(String name, String description) {
         this.name = name;
@@ -22,16 +21,24 @@ public class Room1 implements Room {
     }
 
     @Override
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
     @Override
-    public String getDescription() { return description; }
+    public String getDescription() {
+        return description;
+    }
 
     @Override
-    public Room getNextRoom() { return nextRoom; }
+    public Room getNextRoom() {
+        return nextRoom;
+    }
 
     @Override
-    public Room getPreviousRoom() { return previousRoom; }
+    public Room getPreviousRoom() {
+        return previousRoom;
+    }
 
     @Override
     public void setNextRoom(Room nextRoom) {
@@ -41,36 +48,46 @@ public class Room1 implements Room {
         }
     }
 
-    // ---- Monster handling ----
+    // ---- Monster ----
     @Override
-    public List<Monster> getMonster() {
-        return monsters;
+    public Monster getMonster() {
+        return monster;
     }
 
     @Override
     public void addMonster(Monster monster) {
-        monsters.add(monster);
+
     }
 
     @Override
     public void removeMonster(Monster monster) {
-        monsters.remove(monster);
+
     }
 
-    // ---- Item handling ----
     @Override
-    public List<Item> getItem() {
-        return items;
+    public void setMonster(Monster monster) {
+        this.monster = monster;
+    }
+
+    // ---- Item ----
+    @Override
+    public Item getItem() {
+        return item;
     }
 
     @Override
     public void addItem(Item item) {
-        items.add(item);
+
     }
 
     @Override
     public void removeItem(Item item) {
-        items.remove(item);
+
+    }
+
+    @Override
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     @Override
