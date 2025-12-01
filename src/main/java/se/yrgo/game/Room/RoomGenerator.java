@@ -6,10 +6,15 @@ import se.yrgo.game.monster.Monster;
 import se.yrgo.game.items.Item;
 import se.yrgo.game.monster.Troll;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //Utility class
 
 public class RoomGenerator {
-    public static Room Dungeon() {
+    public static List<Room> Dungeon() {
+
+        List<Room> rooms = new ArrayList<>();
 
         Room entrance = new Room1("Entrance", "Cold air creeps from the darkness.");
         Room stairwell = new Room1("Stairwell", "You descend steep stone steps.");
@@ -22,15 +27,14 @@ public class RoomGenerator {
         stairwell.setItem(new Potion("Elixir of Emberlight", 35));
         darkHallway.setItem(new Beer("Haze Ale", 10));
 
+        //Order rooms
+        rooms.add(entrance);
+        rooms.add(stairwell);
+        rooms.add(oldCell);
+        rooms.add(darkHallway);
 
-        // Linked rooms
-        entrance.setNextRoom(stairwell);
-        stairwell.setNextRoom(oldCell);
-        oldCell.setNextRoom(darkHallway);
-
-        return entrance;
+        return rooms;
     }
-
 }
 
 
