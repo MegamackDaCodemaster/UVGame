@@ -11,6 +11,6 @@ public record Potion(String name, int amount) implements Item {
 
     @Override
     public String getName() {
-        return "";
+        return name;
     }
 }
