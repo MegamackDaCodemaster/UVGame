@@ -41,8 +41,8 @@ public final class Game {
         Monster monster = new Troll();
         Item item = new Potion("Health potion", 50);
         Room room = new Room1("Cave", "A dark and creepy cave");
-        room.addMonster(monster);
-        room.addItem(item);
+        room.setMonster(monster);
+        room.setItem(item);
 
         rooms.add(room);
 
