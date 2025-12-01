@@ -2,8 +2,9 @@ package se.yrgo.game.Room;
 
 import se.yrgo.game.items.Beer;
 import se.yrgo.game.items.Potion;
-import se.yrgo.game.monster.Monster;
-import se.yrgo.game.items.Item;
+import se.yrgo.game.monster.Goblin;
+import se.yrgo.game.monster.Skeleton;
+import se.yrgo.game.monster.Slime;
 import se.yrgo.game.monster.Troll;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
 
 //Utility class
 
-public class RoomGenerator {
+public class DungeonGenerator {
     public static List<Room> Dungeon() {
 
         List<Room> rooms = new ArrayList<>();
@@ -22,10 +23,17 @@ public class RoomGenerator {
         Room darkHallway = new Room1("Dark Hallway", "Only faint echoes can be heard.");
 
         // add monsters/items
-        entrance.setMonster(new Troll());
+        entrance.setMonster(new Slime());
+        stairwell.setMonster(new Skeleton());
+        oldCell.setMonster(new Goblin());
+        darkHallway.setMonster(new Troll());
 
+        entrance.setItem(new Potion("Elixir of Emberlight", 35));
         stairwell.setItem(new Potion("Elixir of Emberlight", 35));
-        darkHallway.setItem(new Beer("Haze Ale", 10));
+        oldCell.setItem(new Potion("Haze Ale", 10));
+        darkHallway.setItem(new Beer("wine", 10));
+        darkHallway.setItem(new Potion("Elixer of Emberlight", 35));
+
 
         //Order rooms
         rooms.add(entrance);
