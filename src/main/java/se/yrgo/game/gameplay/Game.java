@@ -102,7 +102,7 @@ public final class Game {
             name = DEFAULT_PLAYER_NAME;
         }
         name = name.strip();
-        player = new Player(name, 100, 0);
+        player = new Player(name, 100, 0, 30);
 
         gameActions.setPlayer(player);
     }

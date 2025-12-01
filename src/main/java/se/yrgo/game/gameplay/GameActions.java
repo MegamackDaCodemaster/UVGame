@@ -139,7 +139,6 @@ public final class GameActions {
         }
     }
 
-    //todo move to Player?
     public boolean isPlayerDead(Player player) {
         return player.getHealth() <= 0;
     }
