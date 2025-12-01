@@ -37,7 +37,7 @@ public final class GameActions {
      * @return true if all went well, false if player died
      */
     public boolean encounterRoom() {
-        GameUI.printToScreen(String.format("You step into the %s. %s%n",
+        GameUI.printToScreen(String.format("You step into %s. %s%n",
                 room.getName().toLowerCase(), room.getDescription()));
         GameUI.pauseTextFlow(1000);
         GameUI.printToScreen(String.format("Here, you encounter %s! Get ready for battle!!%n",
