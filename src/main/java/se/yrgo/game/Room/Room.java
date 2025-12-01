@@ -14,11 +14,11 @@ public interface Room {
     void setNextRoom(Room nextRoom);
 
     Monster getMonster();
-    void addMonster(Monster monster);
+    void setMonster(Monster monster);
     void removeMonster(Monster monster);
 
     Item getItem();
-    void addItem(Item item);
+    void setItem(Item item);
     void removeItem(Item item);
 
     @Override
