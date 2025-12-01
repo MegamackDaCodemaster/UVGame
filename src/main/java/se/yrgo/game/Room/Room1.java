@@ -64,7 +64,6 @@ public class Room1 implements Room {
 
     }
 
-    @Override
     public void setMonster(Monster monster) {
         this.monster = monster;
     }
@@ -85,7 +84,6 @@ public class Room1 implements Room {
 
     }
 
-    @Override
     public void setItem(Item item) {
         this.item = item;
     }

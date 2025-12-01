@@ -39,7 +39,7 @@ public class RoomGenerator {
         Room start = createRoom(0);
         Room current = start;
 
-        for (int i = 1; i < numberOfRooms; i++) {
+        for (int i = 2; i < numberOfRooms; i++) {
             Room next = createRoom(i);
             current.setNextRoom(next);
             current = next;
