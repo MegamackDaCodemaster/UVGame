@@ -1,5 +1,6 @@
 package se.yrgo.game.gameplay;
 
+import se.yrgo.game.Room.DungeonGenerator;
 import se.yrgo.game.Room.Room1;
 import se.yrgo.game.items.Item;
 import se.yrgo.game.items.Potion;
@@ -29,24 +30,24 @@ public final class Game {
         gameUI = new GameUI(scanner);
         gameActions = new GameActions(scanner, gameUI);
 
-        initializeRooms(); //Todo Move to Roomfactory class!
+        rooms = new ArrayList<>(DungeonGenerator.Dungeon());
     }
 
 
-    private void initializeRooms() {
-        rooms = new ArrayList<>();
-
-        //Todo below is test data, needs proper init later.
-
-        Monster monster = new Troll();
-        Item item = new Potion("Health potion", 50);
-        Room room = new Room1("Cave", "A dark and creepy cave");
-        room.setMonster(monster);
-        room.setItem(item);
-
-        rooms.add(room);
-
-    }
+//    private void initializeRooms() {
+//        rooms = new ArrayList<>();
+//
+//        //Todo below is test data, needs proper init later.
+//
+//        Monster monster = new Troll();
+//        Item item = new Potion("Health potion", 50);
+//        Room room = new Room1("Cave", "A dark and creepy cave");
+//        room.setMonster(monster);
+//        room.setItem(item);
+//
+//        rooms.add(room);
+//
+//    }
 
     public void runGame() {
         setUpPlayer();

@@ -40,7 +40,7 @@ public final class GameActions {
         GameUI.printToScreen(String.format("You step into the %s. %s%n",
                 room.getName().toLowerCase(), room.getDescription()));
         GameUI.pauseTextFlow(1000);
-        GameUI.printToScreen(String.format("...Where you encounter %s! Get ready for battle!!%n",
+        GameUI.printToScreen(String.format("Here, you encounter %s! Get ready for battle!!%n",
                 room.getMonster().getDescription()));
         gameUI.waitForKeyPress();
 

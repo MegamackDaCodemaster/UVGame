@@ -15,7 +15,7 @@ public final class Troll implements Monster {
      * Constructs a default {@code Troll} with pre-defined stats.
      */
     public Troll() {
-        this("Troll", "a hideous troll", 30, 50, 25);
+        this("Troll", "a hideous troll", 50, 50, 30);
     }
 
     public Troll(String monsterName, String description, int rewardPoints, int health, int strength) {
