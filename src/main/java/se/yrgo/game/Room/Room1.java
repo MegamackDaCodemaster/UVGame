@@ -54,7 +54,6 @@ public class Room1 implements Room {
         return monster;
     }
 
-    @Override
     public void addMonster(Monster monster) {
 
     }
@@ -74,7 +73,6 @@ public class Room1 implements Room {
         return item;
     }
 
-    @Override
     public void addItem(Item item) {
 
     }
