@@ -19,8 +19,8 @@ public final class GameUI {
     }
 
     public String getInput() {
-        scanner.nextLine();
-        return scanner.nextLine();
+        var input = scanner.nextLine();
+        return input;
     }
 
     public static void pauseTextFlow(int millisToPause) {

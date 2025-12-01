@@ -49,8 +49,6 @@ public final class GameActions {
             return false;
         }
 
-        GameUI.pauseTextFlow(1000);
-
         if (room.getItem() != null) {
             findItem(player, room.getItem());
         }
@@ -131,7 +129,8 @@ public final class GameActions {
         var input = getUserInput(new String[]{"1", "2"});
 
         if (input.contains("1")) {
-            item.pickup(player);
+            String itemResult = item.pickup(player);
+            GameUI.printToScreen(itemResult);
             gameUI.waitForKeyPress();
         } else {
             GameUI.printToScreen(String.format("You leave it lying and walk away.%n"));

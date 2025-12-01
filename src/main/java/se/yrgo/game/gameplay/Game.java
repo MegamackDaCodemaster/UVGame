@@ -59,7 +59,7 @@ public final class Game {
         gameUI.waitForKeyPress();
 
         GameUI.printToScreen(String.format("Excellent. Now, your journey may start...%n"));
-        GameUI.printWaitingIntervalDots(5);
+        GameUI.printWaitingIntervalDots(4);
 
         while (!rooms.isEmpty() && !gameActions.isPlayerDead(player)) {
             int roomCounter = 0;
