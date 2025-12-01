@@ -13,4 +13,5 @@ public record Beer(String name, int amount) implements Item {
     public String getName() {
         return name;
     }
+    //
 }

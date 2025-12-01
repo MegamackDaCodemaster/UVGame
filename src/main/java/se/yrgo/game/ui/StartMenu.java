@@ -17,6 +17,7 @@ public class StartMenu {
             System.out.println("\n1. Play\n2. Exit");
             System.out.print("OPTION: ");
             int menuOption = scanner.nextInt();
+            scanner.nextLine();
 
             switch (menuOption) {
                 case 1 -> game.runGame();
