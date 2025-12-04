@@ -44,36 +44,6 @@ public final class GameUI {
     }
 
     public void waitForKeyPress() {
-//        scanner.skip(scanner.match())
-//        Pattern normalDelimiter = scanner.delimiter();
-//
-//        scanner.useDelimiter("\n");
-//        scanner.next();
-//
-//        scanner.useDelimiter(normalDelimiter);
         var key = scanner.nextLine();
     }
-
-//    public void testKey() throws IOException {
-//        System.out.println("Press a key to continue.");
-//
-//        scanner.useDelimiter("\n");
-//
-//        scanner.next();
-//        System.out.println("Good job! Again:");
-//
-//
-//        var key = scanner.next();
-//
-//        System.out.println("You pressed " + key);
-//        System.out.println("Good job! Again:");
-//
-//        scanner.next();
-////        scanner.next("\n | .+");
-//
-//        System.out.println("scanner successfull!!!");
-//
-//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//        br.read();
-//    }
 }
