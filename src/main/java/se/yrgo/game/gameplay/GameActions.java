@@ -96,9 +96,9 @@ public final class GameActions {
             }
 
             GameUI.printToScreen("It's still alive and kicking... ");
-            GameUI.pauseTextFlow(1500);
+            GameUI.pauseTextFlow(1000);
             GameUI.printToScreen(String.format("you!!%n"));
-            GameUI.pauseTextFlow(1500);
+            GameUI.pauseTextFlow(1000);
 
             int monsterAttackDamage = monster.getRandomAttack();
             player.decreaseHealth(monsterAttackDamage);
@@ -118,7 +118,7 @@ public final class GameActions {
         GameUI.printToScreen("What's this? The monster dropped something...%n");
         gameUI.waitForKeyPress();
 
-        GameUI.printToScreen(String.format("You see a %s.%n", item.getName())); //Todo: getName method on item.
+        GameUI.printToScreen(String.format("You find %s.%n", item.getName()));
 
         GameUI.printToScreen("What do you want to do?%n");
 
@@ -146,7 +146,7 @@ public final class GameActions {
     private String getUserInput(String[] possibleChoices) {
         String input = "";
 
-        while (!Arrays.asList(possibleChoices).contains(input)) { //Todo: test!
+        while (!Arrays.asList(possibleChoices).contains(input)) {
             try {
                 input = gameUI.getInput();
                 if (!Arrays.asList(possibleChoices).contains(input)) {
