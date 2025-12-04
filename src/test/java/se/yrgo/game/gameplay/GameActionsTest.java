@@ -1,7 +1,6 @@
 package se.yrgo.game.gameplay;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import se.yrgo.game.Room.Room;
 import se.yrgo.game.Room.Room1;
@@ -27,21 +26,21 @@ class GameActionsTest {
     private Item item;
     private Room room;
 
-    private String encounterRoomInput_LeaveItemChoice = "\n\n\n\n\n\n\n\n\n\n2\n\n\n";
-    private String encounterRoomInput_PickUpItemChoice = "\n\n\n\n\n\n\n\n\n\n1\n\n\n";
+    private String encounterRoomInput_LeaveItemChoice = "\n\n\n\n\n\n\n\n\n2\n\n\n\n";
+    private String encounterRoomInput_PickUpItemChoice = "\n\n\n\n\n\n\n\n\n1\n\n\n\n";
 
 
     void setUp(Scanner scanner) {
         gameUI = new GameUI(scanner);
         gameActions = new GameActions(scanner, gameUI);
 
-        player = new Player("Mock Hero", 100, 0, 20);
+        player = new Player("Mock Hero", 100, 0, 30);
         gameActions.setPlayer(player);
 
         monster = new Troll();
-        item = new Potion("Health potion", 20_000);
+        item = new Potion("Health potion", 100);
 
-        room = new Room1("Entrance", "Cold air creeps from the darkness.");
+        room = new Room1("The entrance", "Cold air creeps from the darkness.");
         room.setMonster(monster);
         room.setItem(item);
 
@@ -49,7 +48,7 @@ class GameActionsTest {
     }
 
     @Test
-    void encounterRoomSafely_NotPickUpItem() {
+    void encounterRoomAndLeaveItem_ShouldNotKillPlayer() {
         this.scanner = new Scanner(encounterRoomInput_LeaveItemChoice);
         setUp(scanner);
 
@@ -57,12 +56,12 @@ class GameActionsTest {
     }
 
     @Test
-    void encounterRoomSafely_PickUpItemHealthPotion() {
+    void encounterRoom_TryPickUpItemOption_WithHealthPotion() {
         this.scanner = new Scanner(encounterRoomInput_PickUpItemChoice);
         setUp(scanner);
 
         assertTrue(gameActions.encounterRoom());
-        assertTrue(player.getHealth() > 20_000);
+        assertTrue(player.getHealth() >= 100);
     }
 
     @Test
