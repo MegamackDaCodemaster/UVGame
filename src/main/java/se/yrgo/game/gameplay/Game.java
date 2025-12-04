@@ -14,14 +14,13 @@ import java.io.IOException;
 import java.util.*;
 
 public final class Game {
-    private Player player; //todo move to constructor and get method for setting name
+    private Player player;
     private List<Room> rooms;
     private final Scanner scanner;
     private final GameActions gameActions;
     private final GameUI gameUI;
 
-    public static int START_AMOUNT_OF_ROOMS = 10;
-    public static String DEFAULT_PLAYER_NAME = "The Humble Hero";
+    public static String DEFAULT_PLAYER_NAME = "Humble Hero";
 
     public Game(Scanner scanner) {
         Objects.requireNonNull(scanner);
@@ -33,28 +32,12 @@ public final class Game {
         rooms = new ArrayList<>(DungeonGenerator.Dungeon());
     }
 
-
-//    private void initializeRooms() {
-//        rooms = new ArrayList<>();
-//
-//        //Todo below is test data, needs proper init later.
-//
-//        Monster monster = new Troll();
-//        Item item = new Potion("Health potion", 50);
-//        Room room = new Room1("Cave", "A dark and creepy cave");
-//        room.setMonster(monster);
-//        room.setItem(item);
-//
-//        rooms.add(room);
-//
-//    }
-
     public void runGame() {
         setUpPlayer();
 
         GameUI.printToScreen(String.format("""
                 %nWelcome %s!
-                In this game you will be informed of game events in text-form.
+                In this game you will be informed of game events through text.
                 When you have read the text and wish to continue, press enter once:
                 """, player.getName()));
         gameUI.waitForKeyPress();
@@ -83,12 +66,14 @@ public final class Game {
         } else {
             GameUI.printToScreen(String.format("""
                     At last, %s steps out of the final room and reaches the goal...
-                    
+                    """, player.getName()));
+            GameUI.printWaitingIntervalDots(3);
+
+            GameUI.printToScreen(String.format("""
                     You have cleared the game!!
                     
                     Final score: %d
-                    """, player.getName(), player.getScore()));
-
+                    """, player.getScore()));
             gameUI.waitForKeyPress();
         }
     }
