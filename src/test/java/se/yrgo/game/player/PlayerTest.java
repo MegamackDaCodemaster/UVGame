@@ -32,7 +32,9 @@ public class PlayerTest {
 
     @Test
     void increaseHealthNotPassMaxLimit() {
+        int healthLevelIncrease = 51;
+        int updatedHealthLevel = 101;
         player.increaseHealth(1);
-        assertNotEquals(101, player.getHealth());
+        assertNotEquals(updatedHealthLevel, player.getHealth());
     }
 }

@@ -29,7 +29,6 @@ public class Player {
         health += healthAmount;
         if (health >= 100) {
             health = 100;
-            System.out.println("Health level is MAX!");
         }
     }
 
