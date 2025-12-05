@@ -43,3 +43,4 @@ public class DungeonGeneratorTest {
         assertTrue(darkHallway.getItem() instanceof Beer, "Item should be a Beer");
     }
 }
+*/
