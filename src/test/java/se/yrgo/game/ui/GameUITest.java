@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GameUITest {
     private GameUI gameUI;
-    private String mockInput = "line1\nline2\n";
+    private String mockInput = "line\n";
 
     @BeforeEach
     void test() {
@@ -20,9 +20,9 @@ class GameUITest {
     }
 
     @Test
-    void getUserInput_afterClearingPreviousLineInBuffer(){
+    void getUserInput(){
         var input = gameUI.getInput();
-        assertEquals("line2", input);
+        assertEquals("line", input);
     }
 
 

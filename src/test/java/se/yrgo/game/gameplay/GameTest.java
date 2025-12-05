@@ -12,8 +12,8 @@ class GameTest {
     private Scanner scanner;
     private Game game;
 
-    String badPlayerNameInput = "\n \n";
-    String examplePlayerNameInput = "\nA name\n";
+    String badPlayerNameInput = " \n";
+    String examplePlayerNameInput = "A name\n";
 
     void setUp(String input) {
         scanner = new Scanner(input);
@@ -47,17 +47,10 @@ class GameTest {
         }
     }
 
-
     @Test
     void throwWhenNoScannerArgInConstructor(){
         assertThrows(NullPointerException.class, () ->
                 new Game(null));
     }
-//    @Test
-//    void constructsCorrectNoOfRooms() {
-//        var testGame = new Game();
-//        assertEquals(Game.START_AMOUNT_OF_ROOMS, testGame.);
-//    }
-
 
 }

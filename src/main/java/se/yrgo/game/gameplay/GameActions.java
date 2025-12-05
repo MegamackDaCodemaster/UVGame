@@ -6,19 +6,19 @@ import se.yrgo.game.monster.Monster;
 import se.yrgo.game.player.Player;
 import se.yrgo.game.ui.GameUI;
 
-import java.util.Arrays;
-import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.util.*;
 
 
 public final class GameActions {
     private Player player;
     private Room room;
-    private Scanner scanner;
-    private GameUI gameUI;
+    private final Scanner scanner;
+    private final GameUI gameUI;
 
     public GameActions(Scanner scanner, GameUI gameUI) {
+        Objects.requireNonNull(scanner);
+        Objects.requireNonNull(gameUI);
+
         this.scanner = scanner;
         this.gameUI = gameUI;
     }
@@ -96,9 +96,9 @@ public final class GameActions {
             }
 
             GameUI.printToScreen("It's still alive and kicking... ");
-            GameUI.pauseTextFlow(1500);
+            GameUI.pauseTextFlow(1000);
             GameUI.printToScreen(String.format("you!!%n"));
-            GameUI.pauseTextFlow(1500);
+            GameUI.pauseTextFlow(1000);
 
             int monsterAttackDamage = monster.getRandomAttack();
             player.decreaseHealth(monsterAttackDamage);
@@ -118,7 +118,7 @@ public final class GameActions {
         GameUI.printToScreen("What's this? The monster dropped something...%n");
         gameUI.waitForKeyPress();
 
-        GameUI.printToScreen(String.format("You see a %s.%n", item.getName())); //Todo: getName method on item.
+        GameUI.printToScreen(String.format("You find %s.%n", item.getName()));
 
         GameUI.printToScreen("What do you want to do?%n");
 
@@ -146,7 +146,7 @@ public final class GameActions {
     private String getUserInput(String[] possibleChoices) {
         String input = "";
 
-        while (!Arrays.asList(possibleChoices).contains(input)) { //Todo: test!
+        while (!Arrays.asList(possibleChoices).contains(input)) {
             try {
                 input = gameUI.getInput();
                 if (!Arrays.asList(possibleChoices).contains(input)) {
