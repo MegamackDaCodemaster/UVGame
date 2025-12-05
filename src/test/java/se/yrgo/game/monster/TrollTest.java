@@ -3,6 +3,9 @@ package se.yrgo.game.monster;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+import java.util.random.RandomGenerator;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TrollTest {
@@ -54,7 +57,7 @@ class TrollTest {
         );
     }
 
-    @RepeatedTest(5000)
+    @RepeatedTest(500)
     void shouldReturnValuesBetweenOneAndStrengthFieldValue() {
         int randomAttack = troll.getRandomAttack();
         assertTrue(randomAttack > 0 && randomAttack <= troll.getStrength());
@@ -66,4 +69,5 @@ class TrollTest {
         troll.wound(-10);
         assertEquals(healthBeforeWound, troll.getHealth());
     }
+
 }

@@ -74,6 +74,22 @@ class GameActionsTest {
         assertFalse(gameActions.encounterRoom());
     }
 
+    @Test
+    void throwNPEWhenScannerArgIsNull() {
+        this.scanner = new Scanner("");
+        assertThrows(NullPointerException.class, () -> {
+                GameActions ga = new GameActions(null, new GameUI(scanner));
+        });
+    }
+
+    @Test
+    void throwNPEWhenGameUIArgIsNull() {
+        this.scanner = new Scanner("");
+        assertThrows(NullPointerException.class, () -> {
+            GameActions ga = new GameActions(scanner, null);
+        });
+    }
+
     @AfterEach
     void closeScanner() {
         scanner.close();
