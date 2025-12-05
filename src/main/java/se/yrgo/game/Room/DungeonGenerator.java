@@ -20,7 +20,7 @@ public class DungeonGenerator {
         Room entrance = new Room1("The Entrance", "Cold air creeps from the darkness.");
         Room stairwell = new Room1("The Stairwell", "You descend steep stone steps.");
         Room oldCell = new Room1("An Old Cell", "Rusty bars line the walls.");
-        Room darkHallway = new Room1("The Dark Hallway", "Only faint echoes can be heard.");
+        Room darkHallway = new Room1("The Dark Hallway", "Faint echoes can be heard. you see red glowing eyes staring at you!");
 
         // add monsters/items
         entrance.setMonster(new Slime());
@@ -28,10 +28,10 @@ public class DungeonGenerator {
         oldCell.setMonster(new Goblin());
         darkHallway.setMonster(new Troll());
 
-        entrance.setItem(new Potion("Elixir of Emberlight", 35));
-        stairwell.setItem(new Potion("Elixir of Emberlight", 35));
-        oldCell.setItem(new Beer("Haze Ale", 10));
-        darkHallway.setItem(new Beer("Haze Ale", 10));
+        entrance.setItem(new Potion("Elixir of Emberlight", 30));
+        stairwell.setItem(new Beer("Haze Ale", 10));
+        oldCell.setItem(new Potion("Elixir of Emberlight", 30));
+        darkHallway.setItem(new Beer("Haze Ale", 15));
 
 
 
