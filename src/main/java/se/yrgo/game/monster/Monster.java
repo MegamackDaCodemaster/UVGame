@@ -16,6 +16,7 @@ public interface Monster {
 
     void wound(int hitPoints);
 
+    //todo DI for random
     default int getRandomAttack(){
         Random random = new Random();
         return random.nextInt(1, getStrength() + 1);

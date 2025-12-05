@@ -6,19 +6,19 @@ import se.yrgo.game.monster.Monster;
 import se.yrgo.game.player.Player;
 import se.yrgo.game.ui.GameUI;
 
-import java.util.Arrays;
-import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.util.*;
 
 
 public final class GameActions {
     private Player player;
     private Room room;
-    private Scanner scanner;
-    private GameUI gameUI;
+    private final Scanner scanner;
+    private final GameUI gameUI;
 
     public GameActions(Scanner scanner, GameUI gameUI) {
+        Objects.requireNonNull(scanner);
+        Objects.requireNonNull(gameUI);
+
         this.scanner = scanner;
         this.gameUI = gameUI;
     }
