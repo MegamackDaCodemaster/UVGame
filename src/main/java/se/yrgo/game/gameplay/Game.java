@@ -1,17 +1,14 @@
 package se.yrgo.game.gameplay;
 
 import se.yrgo.game.Room.DungeonGenerator;
-import se.yrgo.game.Room.Room1;
-import se.yrgo.game.items.Item;
-import se.yrgo.game.items.Potion;
-import se.yrgo.game.monster.Troll;
-import se.yrgo.game.player.Player;
 import se.yrgo.game.Room.Room;
-import se.yrgo.game.monster.Monster;
+import se.yrgo.game.player.Player;
 import se.yrgo.game.ui.GameUI;
 
-import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Scanner;
 
 public final class Game {
     private Player player;
