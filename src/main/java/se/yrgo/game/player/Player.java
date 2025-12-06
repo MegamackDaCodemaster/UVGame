@@ -32,13 +32,11 @@ public class Player {
         }
     }
 
-    public int decreaseHealth(int healthAmount) {
+    public void decreaseHealth(int healthAmount) {
         health -= healthAmount;
-        if (health == 0) {
+        if (health <= 0) {
             health = 0;
-            return health;
         }
-        return health;
     }
 
     public int increaseScore(int scoreAmount) {

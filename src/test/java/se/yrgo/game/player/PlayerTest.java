@@ -37,4 +37,28 @@ public class PlayerTest {
         player.increaseHealth(1);
         assertNotEquals(updatedHealthLevel, player.getHealth());
     }
+
+    @Test
+    void decreaseHealth() {
+        int updatedHealthLevel = 30;
+        int healthLevelDecrease = 20;
+        player.decreaseHealth(healthLevelDecrease);
+        assertEquals(updatedHealthLevel, player.getHealth());
+    }
+
+    @Test
+    void decreaseHealthToMin() {
+        int updatedHealthLevel = 0;
+        int healthLevelDecrease = 50;
+        player.decreaseHealth(healthLevelDecrease);
+        assertEquals(updatedHealthLevel, player.getHealth());
+    }
+
+    @Test
+    void decreaseHealthNotPassMinLimit() {
+        int updatedHealthLevel = -1;
+        int healthLevelDecrease = 51;
+        player.decreaseHealth(healthLevelDecrease);
+        assertNotEquals(updatedHealthLevel, player.getHealth());
+    }
 }
