@@ -15,7 +15,7 @@ public class PlayerTest {
     }
 
     @Test
-    void increaseHealth() {
+    void increaseHealthTest() {
         int updatedHealthLevel = 70;
         int healthLevelIncrease = 20;
         player.increaseHealth(healthLevelIncrease);
@@ -23,7 +23,7 @@ public class PlayerTest {
     }
 
     @Test
-    void increaseHealthToMax() {
+    void increaseHealthToMaxTest() {
         int updatedHealthLevel = 100;
         int healthLevelIncrease = 50;
         player.increaseHealth(healthLevelIncrease);
@@ -31,7 +31,7 @@ public class PlayerTest {
     }
 
     @Test
-    void increaseHealthNotPassMaxLimit() {
+    void increaseHealthNotPassMaxLimitTest() {
         int healthLevelIncrease = 51;
         int updatedHealthLevel = 101;
         player.increaseHealth(1);
@@ -39,7 +39,7 @@ public class PlayerTest {
     }
 
     @Test
-    void decreaseHealth() {
+    void decreaseHealthTest() {
         int updatedHealthLevel = 30;
         int healthLevelDecrease = 20;
         player.decreaseHealth(healthLevelDecrease);
@@ -47,7 +47,7 @@ public class PlayerTest {
     }
 
     @Test
-    void decreaseHealthToMin() {
+    void decreaseHealthToMinTest() {
         int updatedHealthLevel = 0;
         int healthLevelDecrease = 50;
         player.decreaseHealth(healthLevelDecrease);
@@ -55,10 +55,31 @@ public class PlayerTest {
     }
 
     @Test
-    void decreaseHealthNotPassMinLimit() {
+    void decreaseHealthNotPassMinLimitTest() {
         int updatedHealthLevel = -1;
         int healthLevelDecrease = 51;
         player.decreaseHealth(healthLevelDecrease);
         assertNotEquals(updatedHealthLevel, player.getHealth());
     }
+
+    @Test
+    void increaseScoreTest() {
+        int updatedScore = 600;
+        int scoreAmountIncrease = 100;
+        player.increaseScore(scoreAmountIncrease);
+        assertEquals(updatedScore, player.getScore());
+    }
+
+    @Test
+    void decreaseScoreTest() {
+        int updatedScore = 400;
+        int scoreAmountDecrease = 100;
+        player.decreaseScore(scoreAmountDecrease);
+        assertEquals(updatedScore, player.getScore());
+    }
+
+    //@Test
+    //void attackDamageTest() {
+        //int damageAmount = 20
+    //}
 }

@@ -39,12 +39,12 @@ public class Player {
         }
     }
 
-    public int increaseScore(int scoreAmount) {
-        return score += scoreAmount;
+    public void increaseScore(int scoreAmount) {
+        score += scoreAmount;
     }
 
-    public int decreaseScore(int scoreAmount) {
-        return score -= scoreAmount;
+    public void decreaseScore(int scoreAmount) {
+        score -= scoreAmount;
     }
 
     public int attack(int damageAmount) {
