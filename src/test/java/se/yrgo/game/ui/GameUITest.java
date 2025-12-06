@@ -11,19 +11,14 @@ import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameUITest {
-    private GameUI gameUI;
-    private String mockInput = "line\n";
-
-    @BeforeEach
-    void test() {
-        gameUI = new GameUI(new Scanner(mockInput));
-    }
 
     @Test
-    void getUserInput(){
+    void testGetUserInput(){
+        Scanner scanner = new Scanner("line\n");
+
+        GameUI gameUI = new GameUI(scanner);
         var input = gameUI.getInput();
         assertEquals("line", input);
     }
-
 
 }

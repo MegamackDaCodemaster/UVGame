@@ -1,11 +1,6 @@
 package se.yrgo.game.ui;
 
-import java.io.BufferedReader;
-import java.io.Console;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public final class GameUI {
     private final Scanner scanner;
@@ -19,8 +14,7 @@ public final class GameUI {
     }
 
     public String getInput() {
-        var input = scanner.nextLine();
-        return input;
+        return scanner.nextLine();
     }
 
     public static void pauseTextFlow(int millisToPause) {
@@ -38,7 +32,7 @@ public final class GameUI {
                 Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
-            Thread.interrupted();
+            Thread.currentThread().interrupt();
         }
         System.out.println();
     }

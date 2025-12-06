@@ -20,7 +20,6 @@ class GameTest {
         game = new Game(scanner);
     }
 
-
     @Test
     void givePlayerDefaultName_whenInputIsEmpty() {
         setUp(badPlayerNameInput);
