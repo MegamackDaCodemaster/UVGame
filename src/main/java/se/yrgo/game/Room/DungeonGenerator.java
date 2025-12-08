@@ -33,7 +33,7 @@ import java.util.List;
 
 public class DungeonGenerator {
     /**
-     * Skapar en dungeon bestående av fyra rum med färdig-konfigurerade monster och items.
+     * Skapar en dungeon bestående av fyra rum med färdig konfigurerade monster och items.
      * <p>
      * Varje rum skapas som en Room1 instans och får:
      * <ul>
@@ -41,7 +41,7 @@ public class DungeonGenerator {
      *     <li>ett specifikt item (Potion eller Beer)</li>
      * </ul>
      *
-     * @return en lista av {@link Room}-objekt i korrekt ordning
+     * @return en lista av Room objekt i korrekt ordning
      */
     public static List<Room> Dungeon() {
 
