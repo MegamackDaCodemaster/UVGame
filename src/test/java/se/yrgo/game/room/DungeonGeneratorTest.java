@@ -18,13 +18,18 @@ import se.yrgo.game.monster.Troll;
 import se.yrgo.game.monster.Goblin;
 import se.yrgo.game.monster.Skeleton;
 
-/*
-Testing if method creates dungeon rooms correctly.
-he number of rooms
-the name of each room
-the monster in each room
-the item in each room
-the order of rooms in the list
+/**
+ * Enhetstester för DungeonGenerator.
+ * <p>
+ * Testerna verifierar att metoden skapar
+ * en korrekt uppsättning rum med:
+ * <ul>
+ *     <li>rätt antal rum</li>
+ *     <li>korrekta namn</li>
+ *     <li>korrekta monster i varje rum</li>
+ *     <li>korrekta items i varje rum</li>
+ *     <li>korrekt ordning i listan</li>
+ * </ul>
  */
 
 public class DungeonGeneratorTest {

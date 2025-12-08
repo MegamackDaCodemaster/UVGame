@@ -3,6 +3,10 @@ package se.yrgo.game.Room;
 import se.yrgo.game.monster.Monster;
 import se.yrgo.game.items.Item;
 
+/**
+ * Representerar ett rum i spelet. Ett rum kan ha ett namn, en beskrivning,
+ * länkar till nästa och föregående rum samt innehålla ett Monster och/eller ett Item.
+ */
 
 public interface Room {
     String getName();
