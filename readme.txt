@@ -3,9 +3,10 @@ Quest of the Fallen Depths Readme
 
 To run the game, follow these steps:
 
-1. Run the script "run-game.sh"
+1. Run the script 'run-game.sh'. (Do this by opening a terminal within the root folder of this project (UVGame/) and enter 'bash run-game.sh')
 
 2. Select "Play" in the menu!
+
 
 If the above does not work try these steps instead:
 
