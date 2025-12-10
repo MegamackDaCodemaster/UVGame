@@ -3,6 +3,12 @@ package se.yrgo.game.Room;
 import se.yrgo.game.monster.Monster;
 import se.yrgo.game.items.Item;
 
+/**
+ * En implementation av interfacet Room.
+ * Room1 representerar ett rum som kan kopplas till nästa rum,
+ * samt innehålla ett Monster och/eller ett Item.
+ */
+
 public class Room1 implements Room {
 
     private String name;
