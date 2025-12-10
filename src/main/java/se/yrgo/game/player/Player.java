@@ -47,10 +47,6 @@ public class Player {
         score -= scoreAmount;
     }
 
-    public int attack(int damageAmount) {
-        return damageAmount;
-    }
-
     public int getAttackDamage() {
         return attackDamage;
     }

@@ -22,6 +22,7 @@ public class StartMenu {
             switch (menuOption) {
                 case 1 -> game.runGame();
                 case 2 -> { using = false; break; }
+                default -> { System.out.println("***INVALID INPUT!***"); }
             }
         } while (using);
     }
