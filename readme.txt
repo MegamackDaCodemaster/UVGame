@@ -1,5 +1,8 @@
 Quest of the Fallen Depths Readme
 
+------
+To follow this readme and to run the script, you will need a bash-compatible terminal.
+------
 
 To run the game, follow these steps:
 
