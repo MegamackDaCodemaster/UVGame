@@ -4,8 +4,8 @@ import se.yrgo.game.monster.Monster;
 import se.yrgo.game.items.Item;
 
 /**
- * Representerar ett rum i spelet. Ett rum kan ha ett namn, en beskrivning,
- * länkar till nästa och föregående rum samt innehålla ett Monster och/eller ett Item.
+ * Represents a room in the game. A room can have a name, a description,
+ * links to the next and previous room, and contain a Monster and/or an Item.
  */
 
 public interface Room {

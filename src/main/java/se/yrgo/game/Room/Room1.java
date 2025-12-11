@@ -4,9 +4,9 @@ import se.yrgo.game.monster.Monster;
 import se.yrgo.game.items.Item;
 
 /**
- * En implementation av interfacet Room.
- * Room1 representerar ett rum som kan kopplas till nästa rum,
- * samt innehålla ett Monster och/eller ett Item.
+ * An implementation of the Room interface.
+ * Room1 represents a room that can be connected to the next room
+ * and can contain a Monster and/or an Item.
  */
 
 public class Room1 implements Room {

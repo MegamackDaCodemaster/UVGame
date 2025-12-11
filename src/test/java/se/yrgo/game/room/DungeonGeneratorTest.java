@@ -19,16 +19,16 @@ import se.yrgo.game.monster.Goblin;
 import se.yrgo.game.monster.Skeleton;
 
 /**
- * Enhetstester för DungeonGenerator.
+ * Unit tests for DungeonGenerator.
  * <p>
- * Testerna verifierar att metoden skapar
- * en korrekt uppsättning rum med:
+ * The tests verify that the method creates
+ * a correct set of rooms with:
  * <ul>
- *     <li>rätt antal rum</li>
- *     <li>korrekta namn</li>
- *     <li>korrekta monster i varje rum</li>
- *     <li>korrekta items i varje rum</li>
- *     <li>korrekt ordning i listan</li>
+ *     <li>the correct number of rooms</li>
+ *     <li>the correct names</li>
+ *     <li>the correct monsters in each room</li>
+ *     <li>the correct items in each room</li>
+ *     <li>the correct order in the list</li>
  * </ul>
  */
 

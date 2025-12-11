@@ -11,37 +11,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Utility klass som genererar en fördefinierad dungeon med fyra rum.
+ * Utility class that generates a predefined dungeon with four rooms.
  * <p>
- * Varje rum får:
+ * Each room receives:
  * <ul>
- *     <li>ett namn</li>
- *     <li>en miljöbeskrivning</li>
- *     <li>ett monster</li>
- *     <li>ett item</li>
+ *     <li>a name</li>
+ *     <li>a description of the environment</li>
+ *     <li>a monster</li>
+ *     <li>an item</li>
  * </ul>
  * <p>
- * Rummen returneras i en specifik ordning:
+ * The rooms are returned in a specific order:
  * <ol>
  *     <li>The Entrance</li>
  *     <li>The Stairwell</li>
  *     <li>An Old Cell</li>
  *     <li>The Dark Hallway</li>
  * </ol>
- * Denna klass är tänkt att användas som startpunkt för spelets dungeon layout.
+ * This class is intended to be used as the starting point for the game's dungeon layout.
  */
 
 public class DungeonGenerator {
     /**
-     * Skapar en dungeon bestående av fyra rum med färdig konfigurerade monster och items.
+     * Creates a dungeon consisting of four rooms with preconfigured monsters and items.
      * <p>
-     * Varje rum skapas som en Room1 instans och får:
+     * Each room is created as a Room1 instance and receives:
      * <ul>
-     *     <li>ett specifikt monster (Slime, Skeleton, Goblin, Troll)</li>
-     *     <li>ett specifikt item (Potion eller Beer)</li>
+     *     <li>a specific monster (Slime, Skeleton, Goblin, Troll)</li>
+     *     <li>a specific item (Potion or Beer)</li>
      * </ul>
      *
-     * @return en lista av Room objekt i korrekt ordning
+     * @return a list of Room objects in the correct order
      */
     public static List<Room> Dungeon() {
 
